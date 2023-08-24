@@ -62,4 +62,20 @@ public class OrderServiceImpl implements OrderService {
 
         return allOrders;
     }
+
+    @Override
+    public ArrayList<OrderEntity> getOrdersBuying() {
+        ArrayList<OrderEntity> orders = orderRepository.getOrderEntitiesByOrderStatus("Order in waiting list");
+        ArrayList<OrderEntity> ordersManufacturing = orderRepository.getOrderEntitiesByOrderStatus("In the manufacturing process");
+        ArrayList<OrderEntity> ordersDelivering = orderRepository.getOrderEntitiesByOrderStatus("Order is delivering");
+        ArrayList<OrderEntity> ordersDelivered = orderRepository.getOrderEntitiesByOrderStatus("Order delivered");
+
+        ArrayList<OrderEntity> allOrders = new ArrayList<>();
+        allOrders.addAll(orders);
+        allOrders.addAll(ordersManufacturing);
+        allOrders.addAll(ordersDelivering);
+        allOrders.addAll(ordersDelivered);
+
+        return allOrders;
+    }
 }

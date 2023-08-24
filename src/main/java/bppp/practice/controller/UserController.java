@@ -1,15 +1,12 @@
 package bppp.practice.controller;
 
-import bppp.practice.entity.OrderEntity;
-import bppp.practice.entity.OrganizationEntity;
-import bppp.practice.entity.ProductEntity;
-import bppp.practice.entity.UserEntity;
+import bppp.practice.entity.*;
 import bppp.practice.models.UserModel;
 import bppp.practice.service.OrderService;
 import bppp.practice.service.OrganizationService;
+import bppp.practice.service.UserHasRoleService;
 import bppp.practice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -23,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Controller
@@ -37,6 +35,9 @@ public class UserController {
     OrderService orderService;
     @Autowired
     OrganizationService organizationService;
+
+    @Autowired
+    UserHasRoleService userHasRoleService;
 
     @GetMapping("/cart")
     public String viewCart(@AuthenticationPrincipal UserDetails userDetails, Model model) {
@@ -121,6 +122,11 @@ public class UserController {
     @GetMapping("/account")
     public String account(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         UserEntity userDB = userService.getByLogin(userDetails.getUsername());
+        UserHasRoleEntity role = userHasRoleService.getRoleByIdUser(userDB.getUserId());
+
+        if (role.getRoleIdRole() == 2)
+            return "redirect:/admin/actions";
+
         model.addAttribute("user", userDB);
         ArrayList<OrderEntity> orders = orderService.getUsersOrders(userDB);
         model.addAttribute("orders", orders);
@@ -128,6 +134,17 @@ public class UserController {
         if (organization == null)
             organization = new OrganizationEntity();
         model.addAttribute("organization", organization);
+
+        ArrayList<String> types = new ArrayList<>();
+        types.add("Individual entrepreneur");
+        types.add("Unitary Enterprise");
+        types.add("Limited Liability Company");
+        types.add("Additional Liability Company");
+        types.add("Public Corporation");
+        types.add("Closed Joint Stock Company");
+
+        model.addAttribute("types", types);
+
         return "my-account";
     }
 

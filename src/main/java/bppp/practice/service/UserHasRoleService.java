@@ -12,5 +12,7 @@ public interface UserHasRoleService {
     public void deleteRoleHasUser(int id);
 
     public List<UserHasRoleEntity> getAllRolesHasUser();
+    public UserHasRoleEntity getRoleByIdUser(int id);
+
 }
 

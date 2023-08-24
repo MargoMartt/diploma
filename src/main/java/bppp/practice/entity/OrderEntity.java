@@ -66,6 +66,7 @@ public class OrderEntity {
     @Getter
     @Setter
     private String orderType;
+
     @Column(name = "customer_type", nullable = true, length = 45)
     @Getter
     @Setter

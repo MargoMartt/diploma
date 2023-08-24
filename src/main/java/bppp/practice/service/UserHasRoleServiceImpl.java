@@ -40,4 +40,10 @@ public class UserHasRoleServiceImpl implements UserHasRoleService {
     public List<UserHasRoleEntity> getAllRolesHasUser() {
         return repository.findAll();
     }
+
+    @Override
+    public UserHasRoleEntity getRoleByIdUser(int id) {
+        return repository.getUserHasRoleEntityByUserIdUser(id);
+
+    }
 }

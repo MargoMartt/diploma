@@ -204,7 +204,7 @@
                                 </div>
 
                                 <p class="mb-0">From your account dashboard. you can view your recent orders, manage
-                                    your shipping]and edit your account details.</p>
+                                    your shipping and edit your account details.</p>
                             </div>
                         </div>
                         <!-- Single Tab Content End -->
@@ -318,13 +318,8 @@
                                                         <label for="last-name" class="required">Organization Type <span>*</span></label>
 <!--                                                        <input type="text" name="type" th:value="${organization.getOrganizationType()}"/>-->
                                                         <select class="select-active" name="type"
-                                                                onchange="handleSelectChange(this)" th:value="${organization.getOrganizationType()}">
-                                                            <option value="Individual entrepreneur">Individual entrepreneur</option>
-                                                            <option value="Unitary Enterprise">Unitary Enterprise</option>
-                                                            <option value="Limited Liability Company">Limited Liability Company</option>
-                                                            <option value="Additional Liability Company">Additional Liability Company</option>
-                                                            <option value="Public Corporation">Public Corporation</option>
-                                                            <option value="Closed Joint Stock Company">  Closed Joint Stock Company</option>
+                                                                onchange="handleSelectChange(this)">
+                                                            <option th:each="type : ${types}" th:value="${type}" th:text="${type}" th:selected="${type == organization.organizationType}"></option>
                                                         </select>
                                                     </div>
                                                 </div>

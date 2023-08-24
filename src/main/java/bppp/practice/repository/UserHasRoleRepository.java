@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserHasRoleRepository extends JpaRepository<UserHasRoleEntity, Integer> {
     public UserHasRoleEntity findUserHasRoleEntitiesByUserIdUser(int id);
+    public UserHasRoleEntity getUserHasRoleEntityByUserIdUser(int id);
 }

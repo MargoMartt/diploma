@@ -47,5 +47,12 @@ public class ProductEntity {
     @Setter
     private String productPicture;
 
-
+    public ProductEntity(String productName, String productType, Double productCost, Integer productCount, String productDescription, String productPicture) {
+        this.productName = productName;
+        this.productType = productType;
+        this.productCost = productCost;
+        this.productCount = productCount;
+        this.productDescription = productDescription;
+        this.productPicture = productPicture;
+    }
 }
