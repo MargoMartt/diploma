@@ -78,4 +78,9 @@ public class OrderServiceImpl implements OrderService {
 
         return allOrders;
     }
+
+    @Override
+    public ArrayList<OrderEntity> getOrderByProductId(int id) {
+        return orderRepository.getOrderEntitiesByProductId(id);
+    }
 }

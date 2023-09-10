@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -23,5 +24,17 @@ public class MainController {
         List<ProductEntity> products = productService.getAllProducts();
         model.addAttribute("products", products);
         return "index";
+    }
+    @GetMapping("/about-us")
+    public String aboutUs(){
+        return "about-us";
+    }
+    @GetMapping("/contact")
+    public String contactUs(){
+        return "contact-us";
+    }
+    @GetMapping("/faq")
+    public String faq(){
+        return "faq";
     }
 }

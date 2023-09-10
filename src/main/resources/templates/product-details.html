@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Toro - Minimal eCommerce HTML Template</title>
+    <title>BZPI - Online shop</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,17 +50,17 @@
                     <div class="main-menu menu-lh-1 main-menu-padding-1">
                         <nav>
                             <ul>
-                                <li class="position-static"><a class="active" href="/">Home <i
+                                <li class="position-static"><a href="/">Home <i
                                         class="fa fa-angle-down"></i></a>
                                 </li>
-                                <li><a href="/">Pages <i class="fa fa-angle-down"></i></a>
+                                <li><a class="active" href="/">Pages <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu-width">
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="contact-us.html">Contact Page</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
+                                        <li><a href="/about-us">About Us</a></li>
+                                        <li><a href="/contact">Contact Page</a></li>
+                                        <li><a href="/faq">FAQ</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/product/all">Shop </a>
+                                <li><a class="active" href="/product/all">Shop </a>
                                 </li>
                                 <li><a href="blog-3.html">Blog </a>
                                 </li>
@@ -93,7 +93,7 @@
             <div class="row align-items-center">
                 <div class="col-6">
                     <div class="mobile-logo logo-width">
-                        <a href="index.html">
+                        <a href="/">
                             <img alt="" src="/images/logo/logo.png">
                         </a>
                     </div>
@@ -222,7 +222,8 @@
                                         <li th:text="${product.productDescription}"></li>
                                     </ul>
                                 </div>
-                                <form class="product-details-action-wrap" method="post" th:action="@{/product/info/{id}(id= ${product.getProductId()})}">
+                                <form class="product-details-action-wrap" method="post"
+                                      th:action="@{/product/info/{id}(id= ${product.getProductId()})}">
                                     <div class="product-details-quality">
                                         <div class="cart-plus-minus">
                                             <input class="cart-plus-minus-box" type="text" name="count" value="1">
@@ -379,10 +380,10 @@
                     <div class="footer-widget footer-info-list-2 mb-30">
                         <h3 class="footer-title">Company Link</h3>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Help Center</a></li>
-                            <li><a href="#">Our Team</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="/about-us">About Us</a></li>
+                            <li><a href="/about-us">Help Center</a></li>
+                            <li><a href="/about-us">Our Team</a></li>
+                            <li><a href="/about-us">Privacy Policy</a></li>
                             <li><a href="#">The Blog</a></li>
                         </ul>
                     </div>

@@ -20,4 +20,6 @@ public interface OrderService {
     public ArrayList<OrderEntity> getUsersOrders(UserEntity user);
 
     public ArrayList<OrderEntity> getOrdersBuying();
+
+    public ArrayList<OrderEntity> getOrderByProductId(int id);
 }

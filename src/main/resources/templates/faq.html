@@ -15,6 +15,7 @@
 	============================================ -->
 
     <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/styles/vendor/bootstrap.min.css">
     <!-- Icon Font CSS -->
     <link rel="stylesheet" href="/styles/vendor/font-awesome.css">
@@ -30,7 +31,6 @@
     <link rel="stylesheet" href="/styles/plugins/jquery-ui.css">
     <link rel="stylesheet" href="/styles/plugins/select2.min.css">
     <link rel="stylesheet" href="/styles/style.css">
-
 </head>
 
 <body>
@@ -53,14 +53,14 @@
                                 <li class="position-static"><a href="/">Home <i
                                         class="fa fa-angle-down"></i></a>
                                 </li>
-                                <li><a href="/">Pages <i class="fa fa-angle-down"></i></a>
+                                <li><a class="active" href="/">Pages <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu-width">
                                         <li><a href="/about-us">About Us</a></li>
                                         <li><a href="/contact">Contact Page</a></li>
                                         <li><a href="/faq">FAQ</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="active" href="/product/all">Shop </a>
+                                <li><a href="/product/all">Shop </a>
                                 </li>
                                 <li><a href="blog-3.html">Blog </a>
                                 </li>
@@ -93,7 +93,7 @@
             <div class="row align-items-center">
                 <div class="col-6">
                     <div class="mobile-logo logo-width">
-                        <a href="index.html">
+                        <a href="/">
                             <img alt="" src="/images/logo/logo.png">
                         </a>
                     </div>
@@ -118,6 +118,7 @@
             </div>
         </div>
     </div>
+
     <!-- mini cart start -->
     <div class="sidebar-cart-active">
         <div class="sidebar-cart-all">
@@ -162,195 +163,155 @@
     </div>
     <!-- aside start -->
 
-    <div class="breadcrumb-area section-padding-1 breadcrumb-bg-1 breadcrumb-ptb-2">
+    <div class="breadcrumb-area section-padding-1 breadcrumb-bg-4 breadcrumb-ptb-5">
         <div class="container-fluid">
             <div class="breadcrumb-content text-center">
                 <div class="breadcrumb-title">
-                    <h2>Plastic Shop</h2>
+                    <h2>FAQ</h2>
                 </div>
                 <ul>
                     <li>
-                        <a href="/">Home</a>
+                        <a href="/">Home </a>
                     </li>
-                    <li><span>  </span></li>
-                    <li class="active"> > shop</li>
+                    <li><span> > </span></li>
+                    <li class="active"> FAQ</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="shop-area section-padding-3 pt-70 pb-100">
-        <div class="container-fluid">
-            <div class="row flex-row-reverse">
-                <div class="col-lg-9">
-                    <div class="shhop-pl-35">
-                        <div class="shop-top-bar">
-                            <div class="shop-top-bar-left">
-                                <div class="shop-top-show">
-                                    <span th:text="'Showing 1–12 of ' + ${products.size()} + ' results'"></span>
+    <div class="faq-area pt-95 pb-35">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="faq-wrap">
+                        <h2>Shopping Questions</h2>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>How long does delivery take?</h3>
+                                    <p>Generally stock items are despatched within 1 to 14 days depending on any
+                                        cutting requirements. Some product pages may specify additional lead times. For
+                                        all orders - including non-stock items - we will confirm exact lead time when we
+                                        send you our official order acknowledgement. If you have a particularly urgent
+                                        requirement, please contact us so that we can ensure we can meet with your
+                                        expectation.</p>
                                 </div>
                             </div>
-                            <div class="shop-top-bar-right">
-                                <div class="shop-tab nav">
-                                    <a href="#shop-1" class="active" data-bs-toggle="tab"><i
-                                            class="dlicon ui-2_grid-45"></i></a>
-                                    <a href="#shop-2" data-bs-toggle="tab"><i class="dlicon design_bullet-list-69"></i></a>
-                                </div>
-                                <div class="shop-short-by ml-50">
-                                    <span>Sort by <i class="fa fa-angle-down angle-down"></i> <i
-                                            class="fa fa-angle-up angle-up"></i></span>
-                                    <ul>
-                                        <li class="active"><a href="#">Default sorting</a></li>
-                                        <li><a href="/product/sorting-products/countDesc">Sort by popularity</a></li>
-                                        <li><a href="/product/sorting-products/costAsc">Sort by price: low to high</a>
-                                        </li>
-                                        <li><a href="/product/sorting-products/costDesc">Sort by price: high to low</a>
-                                        </li>
-                                    </ul>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>How can I pay for my order?</h3>
+                                    <p>All internet orders must be paid for when you place your order. We accept payment
+                                        by credit or debit card. All card transactions are processed through our 100%
+                                        secure payment provider PayPal. For other payment options eg bank transfer,
+                                        cheque, please contact us by telephone to process your order. Existing customers
+                                        can apply for a credit account which can also be used to make online
+                                        purchases.</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-filter-wrapper">
-                            <div class="row">
-                                <!-- Product Filter -->
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>I've sent an email enquiry, when can I expect a reply?</h3>
+                                    <p>TDuring normal working hours Monday to Friday - we aim to reply to all emails
+                                        within 12 hours. If you need an urgent response, please Live Chat with us, or
+                                        call us.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-content jump-3 pt-30">
-                            <div id="shop-1" class="tab-pane active">
-                                <div class="row">
-                                    <div th:each="product: ${products}" class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                                        <div class="product-wrap mb-50">
-                                            <div class="product-img default-overlay mb-25">
-                                                <a th:href="@{/product/info/{id}(id= ${product.productId})}">
-                                                    <img class="default-img" th:src="@{${product.productPicture}}"
-                                                         alt="Product Image" height="600" width="750">
-                                                </a>
-                                                <div class="product-action product-action-position-1">
-                                                    <a title="Add to cart"><span>Add to Cart</span>
-                                                        <form th:method="post"
-                                                              th:action="@{/product/incart/{id}(id=${product.getProductId()})}">
 
-
-
-                                                            <button type="submit"
-                                                                    style="background: none; border: none; padding: 0; cursor: pointer;">
-                                                                <i
-                                                                        class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </form>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-2 title-font-width-400 text-center">
-                                                <h3 class="title-blod"><a
-                                                        th:href="@{/product/info/{id}(id= ${product.productId})}">
-                                                    <span th:text="${product.productName}"></span>
-                                                </a></h3>
-                                                <div class="product-price">
-                                                    <span class="new-price" th:text="${product.productCost}"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>Where can you deliver to?</h3>
+                                    <p>We use our own transport, together with preferred carriers to ensure we can
+                                        deliver to every part of the Belarus. Our
+                                        website can only process orders being delivered to Belarus addresses - for all
+                                        non-Belarus
+                                        deliveries please contact us by telephone to process your order.</p>
                                 </div>
-                            </div>
-                            <div id="shop-2" class="tab-pane">
-                                <div th:each="product: ${products}" class="shop-list-wrap mb-70">
-                                    <div class="row">
-                                        <div class="custom-col-32-shop">
-                                            <div class="product-wrap">
-                                                <div class="product-img default-overlay">
-                                                    <a th:href="@{/product/info/{id}(id= ${product.productId})}">
-                                                        <img class="default-img" th:src="@{${product.productPicture}}"
-                                                             alt="Product Image" height="600" width="750">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="custom-col-68-shop">
-                                            <div class="shop-list-content ml-20">
-                                                <h3 class="title-blod"><a
-                                                        th:href="@{/product/info/{id}(id= ${product.productId})}">
-                                                    <span th:text="${product.productName}"></span>
-                                                </a></h3>
-                                                <div class="pro-list-price">
-                                                    <span th:text="${product.productCost}"></span>
-                                                </div>
-                                                <p th:text="${product.productDescription}">></p>
-                                                <div class="product-list-action">
-                                                    <a title="Add to Wishlist" href="#"><i class="fa fa-heart"></i></a>
-                                                    <div class="pro-list-actioncart">
-                                                        <a title="Add to cart" th:method="post"
-                                                           th:action="@{/product/info/{id}(id=${product.getProductId()})}">Add
-                                                            to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-pagination-style text-center">
-                                <ul>
-                                    <li><a class="active" href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#"><i class="dlicon arrows-1_tail-right"></i></a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="shop-sidebar-style mt-25">
-                        <div class="sidebar-widget mb-65">
-                            <h4 class="pro-sidebar-title">Categories </h4>
-                            <div class="sidebar-widget-list mt-50">
-                                <ul>
-                                    <li><a href="/product/plasticProducts">Plastic Product</a> <span
-                                            th:text="'(' + ${count.get(0)} + ')'"></span></li>
-                                    <li><a href="/product/polymerProducts">Polymer products</a> <span
-                                            th:text="'(' + ${count.get(1)}+ ')'"></span></li>
-                                    <li><a href="/product/filmProducts">Film products</a> <span
-                                            th:text="'(' + ${count.get(2)}+ ')'"></span>
-                                    </li>
-                                    <li><a href="/product/householdChemicals">Household chemicals</a> <span
-                                            th:text="'(' + ${count.get(3)}+ ')'"></span></li>
-                                    <li><a href="/product/regranulate">Regranulate</a> <span
-                                            th:text="'(' + ${count.get(4)}+ ')'"></span>
-                                    </li>
-                                    <li><a href="/product/pressShapes">Press shapes</a> <span
-                                            th:text="'(' + ${count.get(5)}+ ')'"></span>
-                                    </li>
-                                    <li><a href="/product/all">All</a> <span
-                                            th:text="'(' + ${count.get(6)}+ ')'"></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="sidebar-widget mb-70">
-                            <h4 class="pro-sidebar-title">Filter by price </h4>
-                            <form th:action="@{/product/filter-products}" method="get">
-                                <div class="price-filter mt-60">
-                                    <div id="slider-range"></div>
-                                    <div class="price-slider-amount">
-                                        <div class="label-input">
-                                            <span>Price: </span><input type="text" id="amount" name="price"
-                                                                       placeholder="Add Your Price"/>
-                                        </div>
-                                        <button type="submit">Filter</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="sidebar-widget">
-                            <div class="shop-sidebar-banner default-overlay">
-                                <a th:href="@{/product/info/{id}(id= ${products.get(0).getProductId()})}">
-                                    <img class="default-img" th:src="@{${products.get(0).getProductPicture()}}"
-                                         alt="Product Image" height="540" width="692">
-                                </a>
-                                <div class="shop-sidebar-content">
-                                    <h5 th:text="${products.get(0).getProductName()}"></h5>
-                                    <h3>best for you</h3>
+                    <div class="faq-wrap">
+                        <h2>Different Questions</h2>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>I'm heaving problems ordering online?</h3>
+                                    <p>On rare occasions, some customers may experience problems ordering online or
+                                        navigating around our site. We're really sorry if you are having difficulty -
+                                        please contact the sales office to discuss your requirements.</p>
                                 </div>
                             </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>How do I know if my order has been successful?</h3>
+                                    <p>Once your order has been completed and you confirm, you will
+                                        see info in your account. This will contain your order number and full
+                                        details of your order. We suggest you create an account when you order so that
+                                        you can easily review previous orders, enjoy speedy
+                                        checkout and save favourite pieces to your wish list.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>Where can I find previous season items?</h3>
+                                    <p>If a product is online, but showing as out of stock, our customer service team
+                                        may be able to help advise on store stock or restocking information. If an item
+                                        is not showing on the website, we are unable to provide further information.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>Can I order as a gift?</h3>
+                                    <p>Yes, simply choose address and write ‘deliver gift’ in your cart, then when you
+                                        are taken to the
+                                        checkout page you will have a further option add info & write 'this is a gift’ –
+                                        please tick yes
+                                        and you will be able to add a gift message and prices will be removed from the
+                                        invoice. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-wrap">
+                        <h2>Miscellaneous Questions</h2>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>I want to receive an order and the invoice at a different address. Is this
+                                        possible?</h3>
+                                    <p>This is not a problem at all. You can enter a different delivery address, for
+                                        example, if you want to send a gift or you need the items at a different address
+                                        than the invoice address. When you opt for this, we will send the package to the
+                                        delivery address, and the invoice will be sent to the invoice address.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>Why have I only received part of my order?</h3>
+                                    <p>Most of our online orders are picked and shipped from our warehouse in Borisov,
+                                        however, certain products are only available in our stores. Therefore, you may
+                                        receive separate deliveries. Rest assured that our standard delivery timeframes
+                                        still apply and there are no extra charges for additional shipments.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>Why has my order been cancelled?</h3>
+                                    <p>On rare occasions, we may need to cancel your order. In this instance, you'll
+                                        receive an email to notify you as soon as possible, and you will be refunded
+                                        fully for cancelled items.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-faq-wrap mb-40">
+                                    <h3>Do I have to create an account to order?</h3>
+                                    <p>You are required to create an account. We do recommend that you do.
+                                        When you register, you can easily look back at your order history, and with a
+                                        repeat order, you don't have to enter your information again.
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -363,11 +324,11 @@
                 <div class="row">
                     <div class="footer-column footer-width-24">
                         <div class="footer-widget footer-about mb-30">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="/images/logo/logo.png" alt="logo">
                             </a>
                             <p>We combine all currently known technologies for plastic processing: injection molding,
-                                extrusion, blowing, rotational molding, pressing.</p>
+                                extrusion, blowing, rotational molding, pressing..</p>
                             <div class="social-icon-style-2 social-icon-hm4">
                                 <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
                                 <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
@@ -380,17 +341,17 @@
                         <div class="footer-widget footer-info-list-2 mb-30">
                             <h3 class="footer-title">Company Link</h3>
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Help Center</a></li>
-                                <li><a href="#">Our Team</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="/about-us">About Us</a></li>
+                                <li><a href="/about-us">Help Center</a></li>
+                                <li><a href="/about-us">Our Team</a></li>
+                                <li><a href="/about-us">Privacy Policy</a></li>
                                 <li><a href="#">The Blog</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="footer-column footer-width-14">
                         <div class="footer-widget footer-info-list-2 mb-30">
-                            <h3 class="footer-title">Useful Link</h3>
+                            <h3 class="footer-title">Userful Link</h3>
                             <ul>
                                 <li><a href="/product/all">Products</a></li>
                             </ul>
@@ -435,89 +396,10 @@
             <li><a href="#"><i class="dlicon ui-1_email-85"></i></a></li>
         </ul>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
-                            class="dlicon ui-1_simple-remove" aria-hidden="true"></span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row g-0">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <div class="quickview-slider-active owl-carousel">
-                                <a class="img-popup" href="/images/product/quickview-1.jpg"><img
-                                        src="/images/product/quickview-1.jpg" alt=""><span>sold uot</span></a>
-                                <a class="img-popup" href="/images/product/quickview-2.jpg"><img
-                                        src="/images/product/quickview-2.jpg" alt=""><span>sold uot</span></a>
-                            </div>
-                            <!-- Thumbnail Large Image End -->
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <div class="product-details-content">
-                                <div class="pro-dec-next-prev">
-                                    <a class="prev" href="#"><i class="dlicon arrows-1_tail-left"></i></a>
-                                    <a class="next" href="#"><i class="dlicon arrows-1_tail-right"></i></a>
-                                </div>
-                                <h2 class="uppercase">Quilted parka with hood</h2>
-                                <h3>$49.00</h3>
-                                <div class="product-details-peragraph">
-                                    <p>Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna
-                                        molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam
-                                        libero ac turpis pharetra, in vehicula scelerisque. Vestibulum ut sem laoreet,
-                                        feugiat tellus at, hendrerit arcu.</p>
-                                </div>
-                                <div class="product-details-action-wrap">
-                                    <div class="product-details-quality">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
-                                        </div>
-                                    </div>
-                                    <div class="product-details-cart">
-                                        <a title="Add to cart" href="#">Add to cart</a>
-                                    </div>
-                                    <div class="product-details-wishlist">
-                                        <a title="Add to wishlist" href="#"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                    <div class="product-details-compare">
-                                        <a title="Add to compare" href="#"><i class="dlicon arrows-4_compare"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-details-info">
-                                    <a href="#"><i class="dlicon location_pin"></i>Store availability</a>
-                                    <a href="#"><i class="dlicon envir_car"></i>Delivery and return</a>
-                                    <a href="#"><i class="dlicon design_measure-17"></i>Size Guide</a>
-                                </div>
-<!--                                <div class="product-details-meta">-->
-<!--                                    <span>SKU: REF. LA-140</span>-->
-<!--                                    <span>Categories: <a href="#">Fashions</a>, <a href="#">Main 01</a>, <a href="#">Main 02</a></span>-->
-<!--                                    <span>Tags: <a href="#">Blazer</a>, <a href="#">chair</a>, <a href="#">Coat</a>, <a-->
-<!--                                            href="#">dress</a>, <a href="#">light</a>, <a href="#">Living</a>, <a-->
-<!--                                            href="#">Main 01</a></span>-->
-<!--                                </div>-->
-                                <div class="social-icon-style-3">
-                                    <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-                                    <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                                    <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                                    <a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a>
-                                    <a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal end -->
 </div>
 
-<!-- All scripts is here
+<!-- All JS is here
 ============================================ -->
-
-<!-- Modernizer scripts -->
 <script src="/scripts/vendor/modernizr-3.11.7.min.js"></script>
 <!-- jquery -->
 <script src="/scripts/vendor/jquery-v3.6.0.min.js"></script>
@@ -549,7 +431,6 @@
 <script src="/scripts/plugins/ajax-mail.js"></script>
 <!-- Main scripts -->
 <script src="/scripts/main.js"></script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMlLa3XrAmtemtf97Z2YpXwPLlimRK7Pk"></script>
 <script>
     function init() {

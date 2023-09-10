@@ -25,6 +25,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 @Controller
@@ -51,6 +52,19 @@ public class AdminController {
 
         ArrayList<UserEntity> allUsers = (ArrayList<UserEntity>) userService.getAllUser();
         model.addAttribute("allUsers", allUsers);
+
+        ArrayList<String> userStatus = new ArrayList<>();
+        userStatus.add("Active");
+        userStatus.add("Block");
+        model.addAttribute("userStatus", userStatus);
+
+        ArrayList<String> userType = new ArrayList<>();
+        for (UserEntity user: allUsers) {
+            if (user.getOrganizationEntity()!=null)
+                userType.add("Natural person");
+            else userType.add("Legal person");
+        }
+        model.addAttribute("userType", userType);
 
         List<ProductEntity> products = new ArrayList<>();
         ProductEntity product = new ProductEntity("New product", "", 0.0, 0, "Please, write product description", "/images/product/new.png");
@@ -84,7 +98,13 @@ public class AdminController {
                               @RequestParam(name = "count", required = false) int count,
                               @RequestParam(name = "type", required = false) String type) throws IOException {
         String picture = "";
-        if (file != null) {
+        boolean isPicture = false;
+        if (id!=0){
+            ProductEntity product = productService.getProduct(id);
+            if (!Objects.equals(product.getProductPicture(), "") || product.getProductPicture()!=null)
+                isPicture = true;
+        }
+        if (file != null && !isPicture) {
             String image = "E:/Rita/универ/6 sem/practice/practice/src/main/resources/static/images/product/" + file.getOriginalFilename();
             File destination = new File(image);
             file.transferTo(destination);
@@ -103,39 +123,26 @@ public class AdminController {
         return "redirect:/admin/actions";
     }
 
-    @GetMapping("/productAction/delete/{id}")
+    @GetMapping("/actions/products/delete/{id}")
     public String deleteProduct(@PathVariable(name = "id") int id, Model model) {
+        ProductEntity product = productService.getProduct(1);
+        ArrayList<OrderEntity> orders = orderService.getOrderByProductId(id);
+        for (OrderEntity ord : orders) {
+            ord.setProductByProductId(product);
+            orderService.saveOrder(ord);
+        }
         productService.deleteProduct(id);
-        return "redirect:/admin/productAction";
+        return "redirect:/admin/actions";
     }
 
-    @GetMapping("/productAction/add")
-    public String addProduct(Model model) {
-        ArrayList<String> types = adminModel.productTypes();
-        model.addAttribute("types", types);
-        return "productAdd";
+    @PostMapping("/actions/userStatus/{id}")
+    public String editUserStatus(@PathVariable(name = "id") int id, @RequestParam(name = "status") String status) {
+        UserEntity user = userService.getUser(id);
+        user.setStatus(status);
+        userService.saveUser(user);
+        return "redirect:/admin/actions";
     }
 
-    @PostMapping("/productAction/add")
-    public String addProduct(@RequestParam(name = "name", required = false) String name,
-                             @RequestParam(name = "description", required = false)
-                             String description,
-                             @RequestParam(name = "file", required = false) MultipartFile file,
-                             @RequestParam(name = "cost", required = false)
-                             double cost,
-                             @RequestParam(name = "count", required = false)
-                             int count,
-                             @RequestParam(name = "type", required = false)
-                             String type) throws IOException {
-        System.out.println(file.getOriginalFilename().toString());
-        String image = "E:/Rita/универ/6 sem/practice/practice/src/main/resources/static/images/product/" + file.getOriginalFilename();
-        File destination = new File(image);
-        file.transferTo(destination);
-
-        String picture = "/images/product/" + file.getOriginalFilename();
-        adminModel.addProduct(name, description, picture, cost, count, type);
-        return "redirect:/admin/productAction";
-    }
 
 
 }

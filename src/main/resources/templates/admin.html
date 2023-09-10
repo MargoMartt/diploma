@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Toro - Minimal eCommerce HTML Template</title>
+    <title>BZPI - Online shop</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,21 +50,21 @@
                     <div class="main-menu menu-lh-1 main-menu-padding-1">
                         <nav>
                             <ul>
-                                <li class="position-static"><a class="active" href="/">Home <i
+                                <li class="position-static"><a href="/">Home <i
                                         class="fa fa-angle-down"></i></a>
                                 </li>
                                 <li><a href="/">Pages <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu-width">
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="contact-us.html">Contact Page</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
+                                        <li><a href="/about-us">About Us</a></li>
+                                        <li><a href="/contact">Contact Page</a></li>
+                                        <li><a href="/faq">FAQ</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="/product/all">Shop </a>
                                 </li>
                                 <li><a href="blog-3.html">Blog </a>
                                 </li>
-                                <li><a href="/account">My account <i class="fa fa-angle-down"></i> </a>
+                                <li><a class="active" href="/account">My account <i class="fa fa-angle-down"></i> </a>
                                     <ul class="sub-menu-width">
                                         <li><a href="/account">My Account</a></li>
                                         <li><a href="/cart">Shopping Cart</a></li>
@@ -93,7 +93,7 @@
             <div class="row align-items-center">
                 <div class="col-6">
                     <div class="mobile-logo logo-width">
-                        <a href="index.html">
+                        <a href="/">
                             <img alt="" src="/images/logo/logo.png">
                         </a>
                     </div>
@@ -155,8 +155,8 @@
                     <h4>Subtotal: <span>$170.00</span></h4>
                 </div>
                 <div class="cart-checkout-btn">
-                    <a class="btn-hover cart-btn-style" href="cart.html">view cart</a>
-                    <a class="no-mrg btn-hover cart-btn-style" href="checkout.html">checkout</a>
+                    <a class="btn-hover cart-btn-style" href="/cart">view cart</a>
+                    <a class="no-mrg btn-hover cart-btn-style" href="/checkout">checkout</a>
                 </div>
             </div>
         </div>
@@ -353,12 +353,19 @@
                                               enctype="multipart/form-data">
                                             <tr>
                                                 <td style="text-align: center;">
-                                                    <div id="imageContainer" style="display: inline-block; position: relative;">
-                                                        <img th:if="${product.productPicture}" id="productImage_${product.productId}"
+                                                    <div id="imageContainer"
+                                                         style="display: inline-block; position: relative;">
+                                                        <img th:if="${product.productPicture}"
+                                                             id="productImage_${product.productId}"
                                                              th:src="@{${product.productPicture}}"
                                                              alt="Product Image" width="120" height="120">
-                                                        <input type="file" name="file" id="fileInput_${product.productId}" style="display: none;">
-                                                        <label for="fileInput_${product.productId}" id="changeImageButton_${product.productId}" style="cursor: pointer; display: block; text-align: center;">Change image</label>
+                                                        <input type="file" name="file"
+                                                               id="fileInput_${product.productId}"
+                                                               style="display: none;">
+                                                        <label for="fileInput_${product.productId}"
+                                                               id="changeImageButton_${product.productId}"
+                                                               style="cursor: pointer; display: block; text-align: center;">Change
+                                                            image</label>
                                                     </div>
                                                 </td>
                                                 <td style="max-width: 100px; vertical-align: top;">
@@ -398,12 +405,18 @@
                                                            th:value="${product.productCount}"
                                                            style="background-color: white; border: white"></td>
                                                 <td>
+                                                    <a th:href="@{/admin/actions/products/delete/{id}(id=${product.getProductId()})}"
+                                                       style="display: inline;">
+                                                        <i class="dlicon ui-1_simple-remove"></i>
+                                                    </a>
+
                                                     <button type="submit"
                                                             style="background: none; border: none; padding: 0; cursor: pointer;">
                                                         <span>Edit Data</span>
                                                     </button>
                                                 </td>
-                                            </form>
+                                        </form>
+
                                         </tr>
 
                                         </tbody>
@@ -411,6 +424,50 @@
                                 </div>
                             </div>
                         </div> <!-- Single Tab Content End -->
+                        <div class="tab-pane fade" id="users" role="tabpanel">
+                            <div class="myaccount-content">
+                                <div class="myaccount-table table-responsive text-center">
+                                    <table class="table table-bordered">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th>Login</th>
+                                            <th>Name</th>
+                                            <th>Surname</th>
+                                            <th>Status</th>
+                                            <th>Person type</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="user, userIndex : ${allUsers}">
+                                            <form method="post"
+                                                  th:action="@{/admin/actions/userStatus/{id}(id=${user.getUserId()})}"
+                                                  style="display: inline;">
+                                                <td><span th:text="${user.getLogin()}"></span></td>
+                                                <td><span th:text="${user.getUserName()}"></span></td>
+                                                <td><span th:text="${user.getUserSurname()}"></span></td>
+
+                                                <td><select class="select-active" name="status"
+                                                            onchange="handleSelectChange(this)">
+                                                    <option th:each="userStatus : ${userStatus}"
+                                                            th:value="${userStatus}" th:text="${userStatus}"
+                                                            th:selected="${userStatus == user.getStatus()}"></option>
+                                                </select>
+                                                </td>
+                                                <td><span th:text="${userType[userIndex.index]}"></span></td>
+                                                <td>
+                                                    <button type="submit"
+                                                            style="background: none; border: none; padding: 0; cursor: pointer;">
+                                                        <span>Edit Data</span>
+                                                    </button>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -439,10 +496,10 @@
                         <div class="footer-widget footer-info-list-2 mb-30">
                             <h3 class="footer-title">Company Link</h3>
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Help Center</a></li>
-                                <li><a href="#">Our Team</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="/about-us">About Us</a></li>
+                                <li><a href="/about-us">Help Center</a></li>
+                                <li><a href="/about-us">Our Team</a></li>
+                                <li><a href="/about-us">Privacy Policy</a></li>
                                 <li><a href="#">The Blog</a></li>
                             </ul>
                         </div>
@@ -537,18 +594,18 @@
     const fileInputs = document.querySelectorAll('[id^="fileInput_"]');
 
     changeImageButtons.forEach((button, index) => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             fileInputs[index].click();
         });
     });
 
     fileInputs.forEach((fileInput, index) => {
-        fileInput.addEventListener('change', function(event) {
+        fileInput.addEventListener('change', function (event) {
             const file = event.target.files[0];
             if (file) {
                 const productImage = document.getElementById(`productImage_${index}`);
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     productImage.src = e.target.result;
                 };
                 reader.readAsDataURL(file);

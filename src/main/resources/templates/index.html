@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Toro - Minimal eCommerce HTML Template</title>
+    <title>BZPI - Online shop</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,11 +52,11 @@
                             <ul>
                                 <li class="position-static"><a class="active" href="/">Home</a>
                                 </li>
-                                <li><a href="/">Info <i class="fa fa-angle-down"></i></a>
+                                <li><a href="/">Pages <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu-width">
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="contact-us.html">Contact Page</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
+                                        <li><a href="/about-us">About Us</a></li>
+                                        <li><a href="/contact">Contact Page</a></li>
+                                        <li><a href="/faq">FAQ</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="/product/all">Shop </a>
@@ -135,7 +135,7 @@
                     <div class="row align-items-center flex-row-reverse">
                         <div class="col-lg-6 col-md-6">
                             <div class="main-slider-img">
-                                <img src="/images/main.jpg" alt=""  width="903" height="1000">
+                                <img src="/images/main.jpg" alt="" width="903" height="1000">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -205,7 +205,8 @@
             <div class="product-wrap product-wrap-opacity">
                 <div class="product-img default-overlay mb-40">
                     <a th:href="@{/product/info/{id}(id= ${products.get(0).getProductId()})}">
-                        <img class="default-img" th:src="@{${products.get(0).getProductPicture()}}" alt="Product Image" width="600" height="750">
+                        <img class="default-img" th:src="@{${products.get(0).getProductPicture()}}" alt="Product Image"
+                             width="600" height="750">
                     </a>
                     <div class="product-action product-action-position-1">
                         <a title="Add to Cart" href="#"><i class="fa fa-shopping-cart"></i><span>Add to Cart</span></a>
@@ -223,7 +224,8 @@
             <div class="product-wrap product-wrap-opacity">
                 <div class="product-img default-overlay mb-40">
                     <a th:href="@{/product/info/{id}(id= ${products.get(1).getProductId()})}">
-                        <img class="default-img" th:src="@{${products.get(1).getProductPicture()}}" alt="Product Image" width="600" height="750">
+                        <img class="default-img" th:src="@{${products.get(1).getProductPicture()}}" alt="Product Image"
+                             width="600" height="750">
                     </a>
                     <div class="product-action product-action-position-1">
                         <a title="Add to Cart" href="#"><i class="fa fa-shopping-cart"></i><span>Add to Cart</span></a>
@@ -241,7 +243,8 @@
             <div class="product-wrap product-wrap-opacity">
                 <div class="product-img default-overlay mb-40">
                     <a th:href="@{/product/info/{id}(id= ${products.get(2).getProductId()})}">
-                        <img class="default-img" th:src="@{${products.get(2).getProductPicture()}}" alt="Product Image" width="600" height="750">
+                        <img class="default-img" th:src="@{${products.get(2).getProductPicture()}}" alt="Product Image"
+                             width="600" height="750">
                     </a>
                     <div class="product-action product-action-position-1">
                         <a title="Add to Cart" href="#"><i class="fa fa-shopping-cart"></i><span>Add to Cart</span></a>
@@ -259,7 +262,8 @@
             <div class="product-wrap product-wrap-opacity">
                 <div class="product-img default-overlay mb-40">
                     <a th:href="@{/product/info/{id}(id= ${products.get(3).getProductId()})}">
-                        <img class="default-img" th:src="@{${products.get(3).getProductPicture()}}" alt="Product Image" width="600" height="750">
+                        <img class="default-img" th:src="@{${products.get(3).getProductPicture()}}" alt="Product Image"
+                             width="600" height="750">
                     </a>
                     <div class="product-action product-action-position-1">
                         <a title="Add to Cart" href="#"><i class="fa fa-shopping-cart"></i><span>Add to Cart</span></a>
@@ -368,49 +372,75 @@
         </div>
     </div>
 
-    <footer class="footer-area bg-black section-padding-1">
+    <footer class="footer-area section-padding-1 border-top-3">
         <div class="container-fluid">
-            <div class="footer-top pt-95 pb-80">
+            <div class="footer-top pt-100 pb-60">
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-12">
-                        <div class="logo logo-res-center">
+                    <div class="footer-column footer-width-24">
+                        <div class="footer-widget footer-about mb-30">
                             <a href="/">
-                                <img src="/images/logo/logo-white.png" alt="logo">
+                                <img src="/images/logo/logo.png" alt="logo">
                             </a>
+                            <p>We combine all currently known technologies for plastic processing: injection molding,
+                                extrusion, blowing, rotational molding, pressing..</p>
+                            <div class="social-icon-style-2 social-icon-hm4">
+                                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                                <a class="youtube" href="#"><i class="fa fa-youtube"></i></a>
+                                <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <div class="footer-menu text-center">
-                            <nav>
-                                <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Help Center</a></li>
-                                    <li><a href="#">Our Team</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">The Blog</a></li>
-                                </ul>
-                            </nav>
+                    <div class="footer-column footer-width-12">
+                        <div class="footer-widget footer-info-list-2 mb-30">
+                            <h3 class="footer-title">Company Link</h3>
+                            <ul>
+                                <li><a href="/about-us">About Us</a></li>
+                                <li><a href="/about-us">Help Center</a></li>
+                                <li><a href="/about-us">Our Team</a></li>
+                                <li><a href="/about-us">Privacy Policy</a></li>
+                                <li><a href="#">The Blog</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-12">
-                        <div class="social-icon-style-2 social-icon-right">
-                            <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-                            <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                            <a class="youtube" href="#"><i class="fa fa-youtube"></i></a>
-                            <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                    <div class="footer-column footer-width-14">
+                        <div class="footer-widget footer-info-list-2 mb-30">
+                            <h3 class="footer-title">Userful Link</h3>
+                            <ul>
+                                <li><a href="/product/all">Products</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-column footer-width-19">
+                        <div class="footer-widget footer-info-list-2 footer-contect mb-30">
+                            <h3 class="footer-title">Contact info</h3>
+                            <ul>
+                                <li><i class="dlicon ui-2_time-clock"></i> Monday - Friday: 9:00 - 17:00</li>
+                                <li><i class="dlicon ui-1_email-83"></i> bzpi@bzpi.by</li>
+                                <li><i class="dlicon tech-2_rotate"></i> +375 (177) 79-08-21</li>
+                                <li><i class="dlicon ui-1_home-simple"></i> 222511, Republic of Belarus,
+                                    Minsk region, Borisov,
+                                    Dauman str., 97
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-column footer-width-29 mb-30">
+                        <div class="contact-page-map">
+                            <div id="contact-map"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--            <div class="footer-botoom pb-15">-->
-            <!--                <div class="row">-->
-            <!--                    <div class="col-12">-->
-            <!--                        <div class="copyright text-center">-->
-            <!--                            <p>© 2021 <a href="https://hasthemes.com/">Toro.</a> All rights reserved</p>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--            </div>-->
+            <div class="footer-botoom">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="copyright-2 text-center">
+                            <p>© 2023 <a href="https://www.bzpi.by/">BZPI.</a> All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
     <div class="support-lists">
@@ -420,7 +450,6 @@
             <li><a href="#"><i class="dlicon ui-1_email-85"></i></a></li>
         </ul>
     </div>
-
 </div>
 
 <!-- All scripts is here

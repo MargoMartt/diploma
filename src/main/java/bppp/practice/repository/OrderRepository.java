@@ -9,4 +9,5 @@ import java.util.ArrayList;
 public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
     public ArrayList<OrderEntity> getOrderEntitiesByUserByIdUserAndOrderStatus(UserEntity user, String status);
     public ArrayList<OrderEntity> getOrderEntitiesByOrderStatus(String status);
+    public ArrayList<OrderEntity> getOrderEntitiesByProductId(int id);
 }

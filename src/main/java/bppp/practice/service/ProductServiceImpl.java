@@ -39,7 +39,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductEntity> getAllProducts() {
-        return productRepository.findAll();
+
+        ArrayList<ProductEntity> products = (ArrayList<ProductEntity>) productRepository.findAll();
+        for (ProductEntity pr: products) {
+            if (pr.getProductId()==1){
+                products.remove(pr);
+                return products;
+            }
+        }
+        return products;
     }
 
     @Override
