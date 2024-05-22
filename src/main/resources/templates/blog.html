@@ -1,6 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -13,7 +12,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">
 
     <!-- All CSS is here
-	============================================ -->
+    ============================================ -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/styles/vendor/bootstrap.min.css">
@@ -31,7 +30,6 @@
     <link rel="stylesheet" href="/styles/plugins/jquery-ui.css">
     <link rel="stylesheet" href="/styles/plugins/select2.min.css">
     <link rel="stylesheet" href="/styles/style.css">
-
 
 </head>
 
@@ -76,208 +74,180 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-2">
-                    <div class="header-right-wrap header-right-flex">
-                        <div class="same-style cart-wrap">
-                            <a href="/cart" class="cart-active">
-                                <i class="dlicon shopping_bag-20"></i>
-                                <span class="count-style">02</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
-    <div class="header-small-mobile section-padding-1">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-6">
-                    <div class="mobile-logo logo-width">
-                        <a href="index.html">
-                            <img alt="" src="/images/logo/logo.png">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="mobile-header-right-wrap">
-                        <div class="header-right-wrap header-right-flex">
-                            <div class="same-style cart-wrap">
-                                <a href="#" class="cart-active">
-                                    <i class="dlicon shopping_bag-20"></i>
-                                    <span class="count-style">02</span>
-                                </a>
-                            </div>
-                            <div class="same-style header-off-canvas">
-                                <a class="header-aside-button" href="#">
-                                    <i class="dlicon ui-3_menu-left"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- mini cart start -->
-    <div class="sidebar-cart-active">
-        <div class="sidebar-cart-all">
-            <a class="cart-close" href="#"><i class="dlicon ui-1_simple-remove"></i></a>
-            <div class="cart-content">
-                <h3>Корзина</h3>
-                <ul>
-                    <li class="single-product-cart">
-                        <div class="cart-img">
-                            <a href="#"><img src="/images/cart/cart-1.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Bejewelled velvet sandals</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                    <li class="single-product-cart">
-                        <div class="cart-img">
-                            <a href="#"><img src="/images/cart/cart-2.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Contrast faux fur jacket</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                </ul>
-                <div class="cart-total">
-                    <h4>Subtotal: <span>$170.00</span></h4>
-                </div>
-                <div class="cart-checkout-btn">
-                    <a class="btn-hover cart-btn-style" href="/cart">view cart</a>
-                    <a class="no-mrg btn-hover cart-btn-style" href="/cart">checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- aside start -->
-    <div class="breadcrumb-area section-padding-1 bg-gray breadcrumb-ptb-1">
+    <div class="breadcrumb-area section-padding-1 bg-gray breadcrumb-ptb-2">
         <div class="container-fluid">
             <div class="breadcrumb-content text-center">
                 <div class="breadcrumb-title">
-                    <h2>Корзина</h2>
+                    <h2>Блог</h2>
                 </div>
                 <ul>
                     <li>
                         <a href="/">Главная </a>
                     </li>
-                    <li><span> &gt; </span></li>
-                    <li class="active"> Корзина</li>
+                    <li><span> > </span></li>
+                    <li class="active"> Блог</li>
                 </ul>
             </div>
         </div>
     </div>
-    <!-- cart start -->
-    <div class="cart-main-area pt-90 pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <form action="#">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div class="table-content table-responsive cart-table-content">
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th></th>
-                                            <th>Товар</th>
-                                            <th>Стоимость</th>
-                                            <th>Количество</th>
-                                            <th>Итого</th>
-                                            <th>Действие</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="order: ${orders}">
-                                            <td class="product-remove">
-                                                <form method="post"
-                                                      th:action="@{/cart/delete/{id}(id=${order.getIdOrder()})}"
-                                                      style="display: inline;">
-                                                    <button type="submit"
-                                                            style="background: none; border: none; padding: 0; cursor: pointer;">
-                                                        <i class="dlicon ui-1_simple-remove"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                            <td class="product-img">
-                                                <a th:href="@{/product/info/{id}(${order.getProductId()})}">
-                                                    <img th:src="@{${order.getProductByProductId().productPicture}}"
-                                                         alt=""
-                                                         width="75" height="93">
-                                                </a>
-                                            </td>
-                                            <td class="product-name"><a
-                                                    th:href="@{/product/info/{id}(id = ${order.getProductId()})}"><span
-                                                    th:text="${order.getProductByProductId().getProductName()}"></span></a>
-                                            </td>
-                                            <td class="product-price"><span class="amount"
-                                                                            th:text="${order.getProductByProductId().getProductCost()} + ' BYN'"></span>
-                                            </td>
-                                            <form method="post"
-                                                  th:action="@{/cart/update/{id}(id=${order.getIdOrder()})}">
-                                                <td class="cart-quality">
-                                                    <div class="product-details-quality quality-width-cart">
-                                                        <div class="cart-plus-minus">
-                                                            <input class="cart-plus-minus-box" type="text" name="count"
-                                                                   th:value="${order.getOrderCount()}">
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="product-total">
-                                                    <span th:text="${order.getOrderCost()} + ' BYN'"></span>
-                                                </td>
-                                                <td>
-                                                    <button type="submit"
-                                                            style="background: none; border: none; padding: 0; cursor: pointer;">
-                                                        <span>Обновить              </span>
-                                                    </button>
-                                                </td>
-                                            </form>
-                                            <td><a th:href="@{/cart/buy/{id}(id = ${order.getIdOrder()})}"> Купить</a>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="cart-shiping-update-wrapper">
-                                    <div class="cart-clear">
-                                        <a href="/cart/clear">Очистить корзину</a>
-                                    </div>
-                                </div>
+        <!-- Blog start -->
+        <div class="blog-area-2 padding-80-row-col pt-100 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="blog-wrap-3 mb-50">
+                            <div class="blog-img-3 mb-20">
+                                ><img src="/images/blog/b1.jpeg" alt="blog">
                             </div>
-                            <div class="col-lg-4">
-                                <div class="grand-total-wrap">
-                                    <h4>Итоговая стоимость</h4>
-                                    <div class="grand-total-content">
-                                        <ul>
-                                            <li>Общая стоимость <span th:text="${totalCost} + ' BYN'"></span></li>
-                                            <li>Итого <span th:text="${totalCost} + ' BYN'"></span></li>
-                                        </ul>
-                                    </div>
-                                    <div class="grand-btn">
-                                        <a th:href="@{/cart/buy/{id}(id = ${orders.get(0).getIdOrder()})}">Оформить заказ</a>
-                                    </div>
+                            <div class="blog-content-3">
+                                <div class="blog-category">
+                                    <a href="#">Новости</a>
+                                </div>
+                                <h3><a href="https://www.bzpi.by/news/mezhdunarodnyy-den-klienta/">Международный день клиента</a></h3>
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li><a href="#">Опубликовано 19 марта 2024</a></li>
+                                        <li>   <a href="#">Мария Пирог</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-btn-2 blog-btn-2-red mt-35">
+                                    <a href="https://www.bzpi.by/news/mezhdunarodnyy-den-klienta/">Более</a>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="blog-wrap-3 mb-50">
+                            <div class="blog-img-3 mb-20">
+                                <a href="https://www.bzpi.by/news/mezhdunarodnyy-zhenskiy-den/"><img src="/images/blog/b5.jpeg" alt="blog"></a>
+                            </div>
+                            <div class="blog-content-3">
+                                <div class="blog-category">
+                                    <a href="#">Праздники</a>
+                                </div>
+                                <h3><a href="https://www.bzpi.by/news/mezhdunarodnyy-zhenskiy-den/">Международный женский день</a></h3>
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li><a href="#">Опубликовано 7 марта 2024</a></li>
+                                        <li>   <a href="#">Мария Пирог</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-btn-2 blog-btn-2-red mt-35">
+                                    <a href="https://www.bzpi.by/news/mezhdunarodnyy-zhenskiy-den/">Более</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="blog-wrap-3 mb-50">
+                            <div class="blog-img-3 mb-20">
+                                <a href="https://www.bzpi.by/news/v-belarusi-uchrezhden-gosudarstvennyy-znak-kachestva-/">
+                                    <img src="/images/blog/b2.jpg" alt="blog"></a>
+                            </div>
+                            <div class="blog-content-3">
+                                <div class="blog-category">
+                                    <a href="#">Качество</a>
+                                </div>
+                                <h3><a href="https://www.bzpi.by/news/v-belarusi-uchrezhden-gosudarstvennyy-znak-kachestva-/">Государственный знак качества</a></h3>
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li><a href="#">Опубликовано 19 января 2024</a></li>
+                                        <li>   <a href="#">Мария Пирог</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-btn-2 blog-btn-2-red mt-35">
+                                    <a href="https://www.bzpi.by/news/v-belarusi-uchrezhden-gosudarstvennyy-znak-kachestva-/">Более</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="blog-wrap-3 mb-50">
+                            <div class="blog-img-3 mb-20">
+                                <a href="https://www.bzpi.by/news/s-nastupivshim-novym-2024-godom-/"><img src="/images/blog/b6.jpeg" alt="blog"></a>
+                            </div>
+                            <div class="blog-content-3">
+                                <div class="blog-category">
+                                    <a href="#">Праздники</a>
+                                </div>
+                                <h3><a href="https://www.bzpi.by/news/s-nastupivshim-novym-2024-godom-/">С Новым Годом!</a></h3>
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li><a href="#">Опубликовано 1 января 2024</a></li>
+                                        <li>   <a href="#">Мария Пирог</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-btn-2 blog-btn-2-red mt-35">
+                                    <a href="https://www.bzpi.by/news/s-nastupivshim-novym-2024-godom-/">Более</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="blog-wrap-3 mb-50">
+                            <div class="blog-img-3 mb-20">
+                                <a href="https://www.bzpi.by/news/sobranie-molodykh-rabotnikov-oao--bzpi-/">
+                                    <img src="/images/blog/b4.jpeg" alt="blog"></a>
+                            </div>
+                            <div class="blog-content-3">
+                                <div class="blog-category">
+                                    <a href="#">Встречи</a>
+                                </div>
+                                <h3><a href="https://www.bzpi.by/news/sobranie-molodykh-rabotnikov-oao--bzpi-/">Встреча молодых специалистов</a></h3>
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li><a href="#">Опубликовано 21 октября 2023</a></li>
+                                        <li>   <a href="#">Мария Пирог</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-btn-2 blog-btn-2-red mt-35">
+                                    <a href="https://www.bzpi.by/news/sobranie-molodykh-rabotnikov-oao--bzpi-/">Более</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="blog-wrap-3 mb-50">
+                            <div class="blog-img-3 mb-20">
+                                <a href="https://www.bzpi.by/news/vytoki_borisov/">
+                                    <img src="/images/blog/b3.jpeg" alt="blog"></a>
+                                <div class="blog-music-icon">
+                                    <a href="https://www.bzpi.by/news/vytoki_borisov/"><i class="fa fa-music"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-content-3">
+                                <div class="blog-category">
+                                    <a href="#">Мероприятия</a>
+                                </div>
+                                <h3><a href="https://www.bzpi.by/news/vytoki_borisov/">Вытоки</a></h3>
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li><a href="#">Опубликовано 26 августа 2023</a></li>
+                                        <li>   <a href="#">Мария Пирог</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-btn-2 blog-btn-2-red mt-35">
+                                    <a href="https://www.bzpi.by/news/vytoki_borisov/">Более</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pro-pagination-style text-center">
+                    <ul>
+                        <li><a class="active" href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><span>…</span></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="dlicon arrows-1_tail-right"></i></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- cart end -->
+        <!-- Blog end -->
     <footer class="footer-area section-padding-1 border-top-3">
         <div class="container-fluid">
             <div class="footer-top pt-100 pb-60">
@@ -350,9 +320,10 @@
     </div>
 </div>
 
-<!-- All JS is here
+<!-- All scripts is here
 ============================================ -->
 
+<!-- Modernizer scripts -->
 <script src="/scripts/vendor/modernizr-3.11.7.min.js"></script>
 <!-- jquery -->
 <script src="/scripts/vendor/jquery-v3.6.0.min.js"></script>
@@ -384,7 +355,6 @@
 <script src="/scripts/plugins/ajax-mail.js"></script>
 <!-- Main scripts -->
 <script src="/scripts/main.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMlLa3XrAmtemtf97Z2YpXwPLlimRK7Pk"></script>
 <script>
     function init() {
         var mapOptions = {

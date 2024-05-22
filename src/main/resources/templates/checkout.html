@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>BZPI - Online shop</title>
+    <title>БЗПИ - Онлайн-магазин</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,6 +32,61 @@
     <link rel="stylesheet" href="/styles/plugins/select2.min.css">
     <link rel="stylesheet" href="/styles/style.css">
 
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        /* Modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Red Button */
+        .red-btn {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .red-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -51,25 +106,24 @@
                     <div class="main-menu menu-lh-1 main-menu-padding-1">
                         <nav>
                             <ul>
-                                <li class="position-static"><a href="/">Home
-                                </a>
+                                <li class="position-static"><a class="active" href="/">Главная</a>
                                 </li>
-                                <li><a href="/">Pages <i class="fa fa-angle-down"></i></a>
+                                <li><a href="/">Страницы <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu-width">
-                                        <li><a href="/about-us">About Us</a></li>
-                                        <li><a href="/contact">Contact Page</a></li>
+                                        <li><a href="/about-us">О нас</a></li>
+                                        <li><a href="/contact">Контакты</a></li>
                                         <li><a href="/faq">FAQ</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/product/all">Shop </a>
+                                <li><a href="/product/all">Магазин </a>
                                 </li>
-                                <li><a href="blog-3.html">Blog </a>
+                                <li><a href="/blog">Блог </a>
                                 </li>
-                                <li><a href="/account">My account <i class="fa fa-angle-down"></i> </a>
+                                <li><a href="/account">Мой аккаунт <i class="fa fa-angle-down"></i> </a>
                                     <ul class="sub-menu-width">
-                                        <li><a href="/account">My Account</a></li>
-                                        <li><a href="/cart">Shopping Cart</a></li>
-                                        <li><a href="/login">login / register</a></li>
+                                        <li><a href="/account">Аккаунт</a></li>
+                                        <li><a href="/cart">Корзина</a></li>
+                                        <li><a href="/login">Вход / Регистрация</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -166,14 +220,14 @@
         <div class="container-fluid">
             <div class="breadcrumb-content text-center">
                 <div class="breadcrumb-title">
-                    <h2>Checkout</h2>
+                    <h2>Оформление заказа</h2>
                 </div>
                 <ul>
                     <li>
-                        <a href="/">Home </a>
+                        <a href="/">Главная </a>
                     </li>
                     <li><span> &gt; </span></li>
-                    <li class="active">Checkout</li>
+                    <li class="active">Оформление заказа</li>
                 </ul>
             </div>
         </div>
@@ -186,53 +240,51 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="billing-info-wrap mr-100">
-                                <h3>Billing Details</h3>
+                                <h3>Реквизиты покупателя</h3>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="billing-info mb-25">
-                                            <label>First name <abbr class="required" title="required">*</abbr></label>
+                                            <label>Имя <abbr class="required" title="required">*</abbr></label>
                                             <input type="text" name="name" th:value="${user.getUserName()}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="billing-info mb-25">
-                                            <label>Surname <abbr class="required" title="required">*</abbr></label>
+                                            <label>Фамилия <abbr class="required" title="required">*</abbr></label>
                                             <input type="text" name="surname" th:value="${user.getUserSurname()}">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="billing-info mb-25">
-                                            <label>Town / City <abbr class="required" title="required">*</abbr></label>
+                                            <label>Город/населенный пункт <abbr class="required" title="required">*</abbr></label>
                                             <input type="text" name="city">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="billing-info mb-25">
-                                            <label>Street address <abbr class="required"
-                                                                        title="required">*</abbr></label>
-                                            <input class="billing-address" placeholder="House number and street name"
+                                            <label>Адрес <abbr class="required" title="required">*</abbr></label>
+                                            <input class="billing-address" placeholder="Название улицы и номер дома"
                                                    type="text" name="street">
-                                            <input placeholder="Apartment, suite, unit etc. (optional)" type="text"
+                                            <input placeholder="Апартаменты, квартира и т.д." type="text"
                                                    name="apartment">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="billing-info mb-25">
-                                            <label>Phone <abbr class="required" title="required">*</abbr></label>
+                                            <label>Номер телефона <abbr class="required" title="required">*</abbr></label>
                                             <input type="text" name="phone" th:value="${user.getUserPhone()}">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="billing-info mb-25">
-                                            <label>Date of deliver <abbr class="required"
-                                                                         title="required">*</abbr></label>
+                                            <label>Дата доставки <abbr class="required"
+                                                                       title="required">*</abbr></label>
                                             <input class="billing-address"
-                                                   placeholder="Day, when you want to get your order" type="date"
+                                                   placeholder="День, когда хотите получить заказ" type="date"
                                                    name="date" th:min="${dateDeliver}"/>
 
-
-                                            <label>Time interval <abbr class="required"
-                                                                       title="required">*</abbr></label>
+                                            <label>Промежуток времени <abbr class="required"
+                                                                            title="required">*</abbr></label>
                                             <select class="select-active" name="time">
                                                 <option value="09.00-11.00">09.00-11.00</option>
                                                 <option value="11.00-13.00">11.00-13.00</option>
@@ -244,102 +296,99 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="billing-select mb-25">
-                                            <label>Order type <abbr class="required" title="required">*</abbr></label>
+                                            <label>Тип доставки <abbr class="required" title="required">*</abbr></label>
                                             <select class="select-active" name="type">
-                                                <option value="Delivery">Delivery</option>
-                                                <option value="Pickup from Store">Pickup from Store</option>
+                                                <option value="Доставка">Доставка</option>
+                                                <option value="Самовывоз из магазина">Самовывоз из магазина</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="billing-select mb-25">
-                                            <label>Payment <abbr class="required" title="required">*</abbr></label>
-                                            <select class="select-active" name="payment">
-                                                <option value="Cash">Cash</option>
-                                                <option value="Card">Card</option>
-                                                <option value="Transfer to account">Transfer to account</option>
+                                            <label>Оплата <abbr class="required" title="required">*</abbr></label>
+                                            <select id="paymentSelect" class="select-active" name="payment">
+                                                <option value="Перевод на расчетный счет">Перевод на расчетный счет</option>
+                                                <option value="Наличные" disabled>Наличные</option>
+                                                <option value="Карта" disabled>Карта</option>
                                             </select>
+                                            <p id="paymentInfo" style="color: red;"></p>
                                         </div>
                                     </div>
+
                                     <div class="col-lg-12">
                                         <div class="billing-select mb-25">
-                                            <label>Customer type <abbr class="required"
-                                                                       title="required">*</abbr></label>
+                                            <label>Тип покупателя <abbr class="required"
+                                                                        title="required">*</abbr></label>
                                             <select class="select-active" name="personType"
                                                     onchange="handleSelectChange(this)">
-                                                <option value="Natural person">Natural person</option>
-                                                <option value="Legal person">Legal person</option>
-                                                <option value="Add legal person">Add legal person</option>
+                                                <option value="Natural person">Физическое лицо</option>
+                                                <option value="Legal person">Юридическое лицо</option>
+                                                <option value="Add legal person">Добавить юрлицо</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="additional-info-wrap">
-                                    <h3>Additional information</h3>
-                                    <label>Order notes (optional)</label>
-                                    <textarea placeholder="Notes about your order, e.g. special notes for delivery. "
+                                    <h3>Дополнительная информация</h3>
+                                    <label>Оставить пометку (опционально)</label>
+                                    <textarea placeholder="Пометка к заказу. "
                                               name="message"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="your-order-area">
-                                <h3>Your order</h3>
+                                <h3>Ваш заказ</h3>
                                 <div class="your-order-wrap gray-bg-4">
                                     <div class="your-order-info-wrap">
                                         <div class="your-order-info">
                                             <ul>
-                                                <li>Product <span>Total</span></li>
+                                                <li>Товар <span>Количество</span></li>
                                             </ul>
                                         </div>
                                         <div class="your-order-middle">
                                             <ul>
-                                                <li
-                                                        th:text="${order.getProductByProductId().getProductName()} + ' X ' + ${order.getOrderCount()}">
+                                                <li th:text="${order.getProductByProductId().getProductName()} + ' X ' + ${order.getOrderCount()}">
                                                 </li>
                                                 <li></li>
                                             </ul>
                                         </div>
                                         <div class="your-order-info order-subtotal">
                                             <ul>
-                                                <li>Subtotal <span th:text="${order.getOrderCost()} + ' $'"> </span>
+                                                <li>Стоимость <span th:text="${order.getOrderCost()} + ' BYN'"></span>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="your-order-info order-total">
                                             <ul>
-                                                <li>Total <span th:text="${order.getOrderCost()} + ' $'"> </span></li>
+                                                <li>Сумма к оплате <span th:text="${order.getOrderCost()} + ' BYN'"></span></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="payment-method">
-                                        <h5>Direct Bank Transfer</h5>
-                                        <p>Make your payment directly into our bank account. Please use your Order ID as
-                                            the
-                                            payment reference. Your order will not be shipped until the funds have
-                                            cleared
-                                            in our account.</p>
+                                        <h5>Прямой банковский перевод</h5>
+                                        <p>Произведите оплату непосредственно на наш банковский счет.
+                                            Пожалуйста, используйте свой идентификатор заказа как
+                                            код на оплату. Ваш заказ не будет отправлен до тех пор, пока на счет не поступят средства.
+                                        </p>
                                     </div>
                                     <div class="condition-wrap">
-                                        <p>Your personal data will be used to process your order, support your
-                                            experience
-                                            throughout this website, and for other purposes described in our <a
-                                                    href="#">privacy
-                                                policy</a></p>
+                                        <p>
+                                            Ваши личные данные будут использоваться для обработки вашего заказа, поддержки вашей
+                                            работы на этом веб-сайте, а также для других целей, описанных в нашей <a
+                                                href="#">политике приваности</a></p>
                                         <div class="condition-form mb-25">
                                             <input type="checkbox">
-                                            <span>I have read and agree to the website <a
-                                                    href="#">terms and conditions</a><span class="star">*</span></span>
+                                            <span>Я прочел и согласен с <a href="#">условиями и положением.</a><span class="star">*</span></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="Place-order mt-30">
                                     <a>
-                                        <button type="submit"
-                                                style="background: none; border: none; padding: 0; cursor: pointer;">
-                                            <span>Place Order</span>
+                                        <button id="confirmOrderBtn" type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                                            <span>Подтвердить заказ</span>
                                         </button>
-                                        <span>  Place Order</span>
+                                        <span>  Подтвердить заказ</span>
                                     </a>
                                 </div>
                             </div>
@@ -359,8 +408,8 @@
                             <a href="/">
                                 <img src="/images/logo/logo.png" alt="logo">
                             </a>
-                            <p>We combine all currently known technologies for plastic processing: injection molding,
-                                extrusion, blowing, rotational molding, pressing..</p>
+                            <p>Мы объединяем все известные на сегодняшний день технологии переработки пластмасс: литье под давлением,
+                                экструзия, выдув, ротационное формование, прессование.</p>
                             <div class="social-icon-style-2 social-icon-hm4">
                                 <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
                                 <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
@@ -371,34 +420,26 @@
                     </div>
                     <div class="footer-column footer-width-12">
                         <div class="footer-widget footer-info-list-2 mb-30">
-                            <h3 class="footer-title">Company Link</h3>
+                            <h3 class="footer-title">Полезные ссылки</h3>
                             <ul>
-                                <li><a href="/about-us">About Us</a></li>
-                                <li><a href="/about-us">Help Center</a></li>
-                                <li><a href="/about-us">Our Team</a></li>
-                                <li><a href="/about-us">Privacy Policy</a></li>
-                                <li><a href="#">The Blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-column footer-width-14">
-                        <div class="footer-widget footer-info-list-2 mb-30">
-                            <h3 class="footer-title">Userful Link</h3>
-                            <ul>
-                                <li><a href="/product/all">Products</a></li>
+                                <li><a href="/about-us">О нас</a></li>
+                                <li><a href="/about-us">Помошь</a></li>
+                                <li><a href="/about-us">Наша команда</a></li>
+                                <li><a href="/about-us">Политика организации</a></li>
+                                <li><a href="#">Блог</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="footer-column footer-width-19">
                         <div class="footer-widget footer-info-list-2 footer-contect mb-30">
-                            <h3 class="footer-title">Contact info</h3>
+                            <h3 class="footer-title">Контактная информация</h3>
                             <ul>
-                                <li><i class="dlicon ui-2_time-clock"></i> Monday - Friday: 9:00 - 17:00</li>
+                                <li><i class="dlicon ui-2_time-clock"></i> Понедельник - Пятница: 9:00 - 17:00</li>
                                 <li><i class="dlicon ui-1_email-83"></i> bzpi@bzpi.by</li>
                                 <li><i class="dlicon tech-2_rotate"></i> +375 (177) 79-08-21</li>
-                                <li><i class="dlicon ui-1_home-simple"></i> 222511, Republic of Belarus,
-                                    Minsk region, Borisov,
-                                    Dauman str., 97
+                                <li><i class="dlicon ui-1_home-simple"></i> 222511, Республика Беларусь,
+                                    Минская область, Борисова,
+                                    ул. Даумана, 97
                                 </li>
                             </ul>
                         </div>
@@ -414,7 +455,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright-2 text-center">
-                            <p>© 2023 <a href="https://www.bzpi.by/">BZPI.</a> All rights reserved.</p>
+                            <p>© 2024 <a href="https://www.bzpi.by/">БЗПИ.</a> Все права защищены.</p>
                         </div>
                     </div>
                 </div>
@@ -467,6 +508,69 @@
 <!-- Main scripts -->
 <script src="/scripts/main.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMlLa3XrAmtemtf97Z2YpXwPLlimRK7Pk"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    document.addEventListener("DOMContentLoaded", function() {
+        const orderCost = /*[[${order.getOrderCost()}]]*/ 0;
+        const paymentSelect = document.getElementById("paymentSelect");
+        const paymentInfo = document.getElementById("paymentInfo");
+
+        function updatePaymentOptions() {
+            if (orderCost > 500) {
+                paymentSelect.value = "Transfer to account";
+                paymentSelect.querySelector('option[value="Cash"]').disabled = true;
+                paymentSelect.querySelector('option[value="Card"]').disabled = true;
+                paymentSelect.querySelector('option[value="Transfer to account"]').disabled = false;
+                paymentInfo.textContent = "Невозможно выбрать иной тип оплаты, так как сумма заказа превышает 500 BYN.";
+            } else {
+                paymentSelect.querySelector('option[value="Cash"]').disabled = false;
+                paymentSelect.querySelector('option[value="Card"]').disabled = false;
+                paymentSelect.querySelector('option[value="Transfer to account"]').disabled = false;
+                paymentInfo.textContent = "";
+            }
+        }
+
+        updatePaymentOptions();
+
+        paymentSelect.addEventListener("change", function() {
+            if (orderCost > 500) {
+                paymentSelect.value = "Transfer to account";
+                paymentInfo.textContent = "Невозможно выбрать иной тип оплаты, так как сумма заказа превышает 500 BYN.";
+            } else {
+                paymentInfo.textContent = "";
+            }
+        });
+    });
+    /*]]>*/
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+// Function to display the modal
+function showModal() {
+var modal = document.getElementById("myModal");
+modal.style.display = "block";
+
+// Close the modal when the user clicks on the close button
+var closeBtn = document.querySelector(".close");
+closeBtn.onclick = function() {
+modal.style.display = "none";
+}
+
+// Close the modal when the user clicks anywhere outside of the modal
+window.onclick = function(event) {
+if (event.target == modal) {
+modal.style.display = "none";
+}
+}
+}
+
+// Call the function to display the modal
+showModal();
+});
+</script>
+
 <script>
     function handleSelectChange(selectElement) {
         const selectedValue = selectElement.value;
@@ -480,182 +584,24 @@
         var mapOptions = {
             zoom: 11,
             scrollwheel: false,
-            center: new google.maps.LatLng(40.709896, -73.995481),
-            styles: [{
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#e9e9e9"
-                },
-                    {
-                        "lightness": 17
-                    }
-                ]
-            },
-                {
-                    "featureType": "landscape",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#f5f5f5"
-                    },
-                        {
-                            "lightness": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 17
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.stroke",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 29
-                        },
-                        {
-                            "weight": 0.2
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 18
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 16
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#f5f5f5"
-                    },
-                        {
-                            "lightness": 21
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.park",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#dedede"
-                    },
-                        {
-                            "lightness": 21
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.stroke",
-                    "stylers": [{
-                        "visibility": "on"
-                    },
-                        {
-                            "color": "#ffffff"
-                        },
-                        {
-                            "lightness": 16
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.fill",
-                    "stylers": [{
-                        "saturation": 36
-                    },
-                        {
-                            "color": "#333333"
-                        },
-                        {
-                            "lightness": 40
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.icon",
-                    "stylers": [{
-                        "visibility": "off"
-                    }]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#f2f2f2"
-                    },
-                        {
-                            "lightness": 19
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "color": "#fefefe"
-                    },
-                        {
-                            "lightness": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative",
-                    "elementType": "geometry.stroke",
-                    "stylers": [{
-                        "color": "#fefefe"
-                    },
-                        {
-                            "lightness": 17
-                        },
-                        {
-                            "weight": 1.2
-                        }
-                    ]
-                }
+            center: new google.maps.LatLng(54.2071, 28.5067), // Координаты для г. Борисов, Беларусь
+            styles: [
+                // Стили карты
             ]
         };
         var mapElement = document.getElementById('contact-map');
         var map = new google.maps.Map(mapElement, mapOptions);
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(40.709896, -73.995481),
+            position: new google.maps.LatLng(54.2071, 28.5067), // Координаты для г. Борисов, Беларусь
             map: map,
             icon: '/images/icon-img/2.png',
             animation: google.maps.Animation.BOUNCE,
-            title: 'Snazzy!'
+            title: 'Местоположение: г. Борисов, ул. Даумана, 97'
         });
     }
 
     google.maps.event.addDomListener(window, 'load', init);
 </script>
-
 </body>
 
 </html>

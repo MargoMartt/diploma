@@ -1,12 +1,12 @@
 package bppp.practice.controller;
 
 import bppp.practice.entity.OrderEntity;
-import bppp.practice.entity.OrganizationEntity;
 import bppp.practice.entity.UserEntity;
-import bppp.practice.enums.OrderStatus;
-import bppp.practice.enums.ProductType;
 import bppp.practice.models.AdminModel;
 import bppp.practice.entity.ProductEntity;
+import bppp.practice.models.Chart;
+import bppp.practice.models.ProductsModel;
+import bppp.practice.models.Report;
 import bppp.practice.service.OrderService;
 import bppp.practice.service.ProductService;
 import bppp.practice.service.UserService;
@@ -18,14 +18,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 @Controller
@@ -41,6 +40,11 @@ public class AdminController {
     UserService userService;
     @Autowired
     OrderService orderService;
+    @Autowired
+    ProductsModel productsModel;
+
+    @Autowired
+    Report report;
 
     @GetMapping("/actions")
     public String adminsAction(@AuthenticationPrincipal UserDetails userDetails, Model model) {
@@ -54,22 +58,22 @@ public class AdminController {
         model.addAttribute("allUsers", allUsers);
 
         ArrayList<String> userStatus = new ArrayList<>();
-        userStatus.add("Active");
-        userStatus.add("Block");
+        userStatus.add("Активный");
+        userStatus.add("Заблокирован");
         model.addAttribute("userStatus", userStatus);
 
         ArrayList<String> userType = new ArrayList<>();
-        for (UserEntity user: allUsers) {
-            if (user.getOrganizationEntity()!=null)
-                userType.add("Natural person");
-            else userType.add("Legal person");
+        for (UserEntity user : allUsers) {
+            if (user.getOrganizationEntity() != null)
+                userType.add("Физическое лицо");
+            else userType.add("Юридическое лицо");
         }
         model.addAttribute("userType", userType);
 
         List<ProductEntity> products = new ArrayList<>();
-        ProductEntity product = new ProductEntity("New product", "", 0.0, 0, "Please, write product description", "/images/product/new.png");
+        ProductEntity product = new ProductEntity("Новый продукт", "", 0.0, 0, "Пожалуйста, напишите описание продукта", "/images/product/new.png");
         products.add(product);
-        products.addAll(productService.getAllProducts());
+        products.addAll(productService.getAllNonDeletedProducts());
         model.addAttribute("products", products);
 
         ArrayList<String> productTypes = adminModel.productTypes();
@@ -81,14 +85,35 @@ public class AdminController {
         return "admin";
     }
 
-    @PostMapping("actions/orderStatus/{id}")
-    public String editOrderStatus(@PathVariable(name = "id") int id, @RequestParam(name = "status") String status) {
-        OrderEntity order = orderService.getOrder(id);
-        order.setOrderStatus(status);
-        orderService.saveOrder(order);
-        return "redirect:/admin/actions";
-    }
+    @GetMapping("/statistics")
+    public String adminsStatistics(Model model) {
+        List<ProductEntity> products = new ArrayList<>();
+        products.addAll(productService.sortByPopularityDesc());
 
+        List<ProductEntity> filteredProducts;
+
+        filteredProducts = products.stream()
+                .filter(product -> !product.getIsDeleted())
+                .collect(Collectors.toList());
+
+        model.addAttribute("products", filteredProducts);
+        int countType = filteredProducts.size();
+        model.addAttribute("count", countType);
+
+        ArrayList<Report> report = adminModel.productsForReport((ArrayList<ProductEntity>) filteredProducts);
+        model.addAttribute("report", report);
+
+        ArrayList<Report> oods = adminModel.calculateOods(report);
+        model.addAttribute("oods", oods);
+
+        ArrayList<Chart> chartData = adminModel.getInfoForChart();
+        model.addAttribute("chartData", chartData);
+
+        for (Chart c:chartData) {
+            System.out.println(c.getProductType() + " " + c.getSalesCount() );
+        }
+        return "statistic";
+    }
     @PostMapping("/actions/products/{id}")
     public String editProduct(@PathVariable(name = "id") int id,
                               @RequestParam(name = "name", required = false) String name,
@@ -97,41 +122,54 @@ public class AdminController {
                               @RequestParam(name = "cost", required = false) double cost,
                               @RequestParam(name = "count", required = false) int count,
                               @RequestParam(name = "type", required = false) String type) throws IOException {
-        String picture = "";
-        boolean isPicture = false;
-        if (id!=0){
-            ProductEntity product = productService.getProduct(id);
-            if (!Objects.equals(product.getProductPicture(), "") || product.getProductPicture()!=null)
-                isPicture = true;
+        System.out.println("FILE " + file.getOriginalFilename());
+        if (file != null) {
+            System.out.println("FILE: " + file.getOriginalFilename());
+        } else {
+            System.out.println("No file attached.");
         }
-        if (file != null && !isPicture) {
-            String image = "E:/Rita/универ/6 sem/practice/practice/src/main/resources/static/images/product/" + file.getOriginalFilename();
-            File destination = new File(image);
+
+        if (file != null && !file.isEmpty()) {
+            String originalFilename = file.getOriginalFilename(); // Получаем имя файла
+            String fileName = UUID.randomUUID().toString() + "_" + originalFilename;
+            String uploadDir = "/Users/ritamartinkevich/University/practice/src/main/resources/static/images/product/";
+            String filePath = uploadDir + fileName;
+            File destination = new File(filePath);
             file.transferTo(destination);
-            picture = "/images/product/" + file.getOriginalFilename();
+            String picture = "/images/product/" + fileName;
+            if (id != 0) {
+                ProductEntity product = productService.getProduct(id);
+                if (!Objects.equals(product.getProductPicture(), "") || product.getProductPicture() != null) {
+                    adminModel.editProduct(id, name, description, picture, cost, count, type);
+                } else {
+                    adminModel.editProductWithoutPicture(id, name, description, cost, count, type);
+                }
+            } else {
+                adminModel.addProduct(name, description, picture, cost, count, type);
+            }
+        } else {
+            if (id != 0) {
+                adminModel.editProductWithoutPicture(id, name, description, cost, count, type);
+            } else {
+                adminModel.addProduct(name, description, "", cost, count, type);
+            }
         }
-        if (picture != "" && id != 0) {
-            adminModel.editProduct(id, name, description, picture, cost, count, type);
-        }
-        if (picture == "" && id != 0)
-            adminModel.editProductWithoutPicture(id, name, description, cost, count, type);
+        return "redirect:/admin/actions";
+    }
 
-        if (id == 0) {
-            adminModel.addProduct(name, description, picture, cost, count, type);
-        }
 
+    @PostMapping("actions/orderStatus/{id}")
+    public String editOrderStatus(@PathVariable(name = "id") int id, @RequestParam(name = "status") String status) {
+        OrderEntity order = orderService.getOrder(id);
+        order.setOrderStatus(status);
+        orderService.saveOrder(order);
         return "redirect:/admin/actions";
     }
 
     @GetMapping("/actions/products/delete/{id}")
     public String deleteProduct(@PathVariable(name = "id") int id, Model model) {
-        ProductEntity product = productService.getProduct(1);
-        ArrayList<OrderEntity> orders = orderService.getOrderByProductId(id);
-        for (OrderEntity ord : orders) {
-            ord.setProductByProductId(product);
-            orderService.saveOrder(ord);
-        }
-        productService.deleteProduct(id);
+        ProductEntity product = productService.getProduct(id);
+        productService.deleteProduct(product);
         return "redirect:/admin/actions";
     }
 
@@ -142,7 +180,6 @@ public class AdminController {
         userService.saveUser(user);
         return "redirect:/admin/actions";
     }
-
 
 
 }

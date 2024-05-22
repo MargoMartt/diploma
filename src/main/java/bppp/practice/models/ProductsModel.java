@@ -7,7 +7,6 @@ import bppp.practice.enums.OrderStatus;
 import bppp.practice.service.OrderService;
 import bppp.practice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -21,13 +20,13 @@ public class ProductsModel {
     OrderService orderService;
     public ArrayList<Integer> countProducts() {
         ArrayList<Integer> allCounts = new ArrayList<>();
-        allCounts.add(productService.getCountByType("Press shapes"));
-        allCounts.add(productService.getCountByType("Polymer products"));
-        allCounts.add(productService.getCountByType("Film products"));
-        allCounts.add(productService.getCountByType("Household chemicals"));
-        allCounts.add(productService.getCountByType("Regranulate"));
-        allCounts.add(productService.getCountByType("Press shapes"));
-        allCounts.add(productService.getAllProducts().size());
+        allCounts.add(productService.getCountByType("Пластмассовая продукция"));
+        allCounts.add(productService.getCountByType("Полимерная продукция"));
+        allCounts.add(productService.getCountByType("Пленочная продукция"));
+        allCounts.add(productService.getCountByType("Бытовая химия"));
+        allCounts.add(productService.getCountByType("Регранулят"));
+        allCounts.add(productService.getCountByType("Пресс-форма"));
+        allCounts.add(productService.getCount());
         return allCounts;
     }
     public void inCart(UserEntity user, ProductEntity product, int count){

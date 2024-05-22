@@ -49,15 +49,18 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public ArrayList<OrderEntity> getUsersOrders(UserEntity user) {
-        ArrayList<OrderEntity> orders = orderRepository.getOrderEntitiesByUserByIdUserAndOrderStatus(user, "Order in waiting list");
-        ArrayList<OrderEntity> ordersManufacturing = orderRepository.getOrderEntitiesByUserByIdUserAndOrderStatus(user, "In the manufacturing process");
-        ArrayList<OrderEntity> ordersDelivering = orderRepository.getOrderEntitiesByUserByIdUserAndOrderStatus(user, "Order is delivering");
-        ArrayList<OrderEntity> ordersDelivered = orderRepository.getOrderEntitiesByUserByIdUserAndOrderStatus(user, "Order delivered");
+        ArrayList<OrderEntity> orders = orderRepository.getOrderEntitiesByUserByIdUserAndOrderStatus(user, "Заказ в листе ожидания");
+        ArrayList<OrderEntity> ordersManufacturing = orderRepository.getOrderEntitiesByUserByIdUserAndOrderStatus(user, "В процессе производства");
+        ArrayList<OrderEntity> ordersDelivering = orderRepository.getOrderEntitiesByUserByIdUserAndOrderStatus(user, "Заказ доставляется");
+        ArrayList<OrderEntity> ordersDelivered = orderRepository.getOrderEntitiesByUserByIdUserAndOrderStatus(user, "Заказ доставлен");
+        ArrayList<OrderEntity> ordersWaitingPayment = orderRepository.getOrderEntitiesByUserByIdUserAndOrderStatus(user, "Ожидается оплата");
+
 
         ArrayList<OrderEntity> allOrders = new ArrayList<>();
-        allOrders.addAll(orders);
-        allOrders.addAll(ordersManufacturing);
+        allOrders.addAll(ordersWaitingPayment);
         allOrders.addAll(ordersDelivering);
+        allOrders.addAll(ordersManufacturing);
+        allOrders.addAll(orders);
         allOrders.addAll(ordersDelivered);
 
         return allOrders;
@@ -65,12 +68,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public ArrayList<OrderEntity> getOrdersBuying() {
-        ArrayList<OrderEntity> orders = orderRepository.getOrderEntitiesByOrderStatus("Order in waiting list");
-        ArrayList<OrderEntity> ordersManufacturing = orderRepository.getOrderEntitiesByOrderStatus("In the manufacturing process");
-        ArrayList<OrderEntity> ordersDelivering = orderRepository.getOrderEntitiesByOrderStatus("Order is delivering");
-        ArrayList<OrderEntity> ordersDelivered = orderRepository.getOrderEntitiesByOrderStatus("Order delivered");
+        ArrayList<OrderEntity> orders = orderRepository.getOrderEntitiesByOrderStatus("Заказ в листе ожидания");
+        ArrayList<OrderEntity> ordersManufacturing = orderRepository.getOrderEntitiesByOrderStatus("В процессе производства");
+        ArrayList<OrderEntity> ordersDelivering = orderRepository.getOrderEntitiesByOrderStatus("Заказ доставляется");
+        ArrayList<OrderEntity> ordersDelivered = orderRepository.getOrderEntitiesByOrderStatus("Заказ доставлен");
+        ArrayList<OrderEntity> ordersWaitingPayment = orderRepository.getOrderEntitiesByOrderStatus("Ожидается оплата");
 
         ArrayList<OrderEntity> allOrders = new ArrayList<>();
+        allOrders.addAll(ordersWaitingPayment);
         allOrders.addAll(orders);
         allOrders.addAll(ordersManufacturing);
         allOrders.addAll(ordersDelivering);
@@ -82,5 +87,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public ArrayList<OrderEntity> getOrderByProductId(int id) {
         return orderRepository.getOrderEntitiesByProductId(id);
+    }
+
+    @Override
+    public int countOfOrdersByProductID(int id) {
+        return orderRepository.countByProductId(id);
     }
 }

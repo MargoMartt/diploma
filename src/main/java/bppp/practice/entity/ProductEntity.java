@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "product", schema = "practice", catalog = "")
+@Table(name = "product", schema = "bzpi")
 @NoArgsConstructor
 public class ProductEntity {
 
@@ -47,6 +47,10 @@ public class ProductEntity {
     @Setter
     private String productPicture;
 
+    @Column(name = "is_deleted", nullable = false, length = 45)
+    @Getter
+    @Setter
+    private Boolean isDeleted;
     public ProductEntity(String productName, String productType, Double productCost, Integer productCount, String productDescription, String productPicture) {
         this.productName = productName;
         this.productType = productType;

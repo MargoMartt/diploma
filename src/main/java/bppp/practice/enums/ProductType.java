@@ -1,26 +1,25 @@
 package bppp.practice.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum ProductType {
-    PLASTIC("Plastic products"),
+    PLASTIC("Пластмассовая продукция"),
 
-    POLYMER("Polymer products"),
+    POLYMER("Полимерная продукция"),
 
-    FILM("Film products"),
+    FILM("Пленочная продукция"),
 
-    HOUSEHOLD("Household chemicals"),
+    HOUSEHOLD("Бытовая химия"),
 
-    REGRANULATE("Regranulate"),
+    REGRANULATE("Регранулят"),
 
-    SHAPES("Press shapes");
+    SHAPES("Пресс-форма");
 
     private String code;
 
-    private ProductType(String code) {
+     ProductType(String code) {
         this.code = code;
-    }
-
-    public String getCode() {
-        return code;
     }
 
 }

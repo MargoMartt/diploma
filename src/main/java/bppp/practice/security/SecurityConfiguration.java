@@ -1,6 +1,6 @@
 package bppp.practice.security;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
+import org.postgresql.ds.PGSimpleDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -70,12 +70,21 @@ public class SecurityConfiguration {
 //
 //        return dataSource;
 
-        MysqlDataSource mysqlDS = new MysqlDataSource();
-        mysqlDS.setURL("jdbc:mysql://localhost:3306/practice?useSSL=false&serverTimezone=UTC");
-        mysqlDS.setUser("root");
-        mysqlDS.setPassword("Rita2102");
+        PGSimpleDataSource pgDataSource = new PGSimpleDataSource();
+        pgDataSource.setServerName("localhost");
+        pgDataSource.setPortNumber(5432);
+        pgDataSource.setDatabaseName("bzpi");
+        pgDataSource.setUser("postgres");
+        pgDataSource.setPassword("Rita2102");
 
-        return mysqlDS;
+// Получение соединения с базой данных
+//        try (Connection connection = pgDataSource.getConnection()) {
+//            // Ваш код работы с соединением
+//        } catch (SQLException e) {
+//            // Обработка ошибок
+//            e.printStackTrace();
+//        }
+        return pgDataSource;
     }
 
 //    @Bean

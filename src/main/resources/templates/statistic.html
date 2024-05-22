@@ -1,0 +1,487 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>БЗПИ - Онлайн-магазин</title>
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">
+
+    <!-- All CSS is here
+    ============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/styles/vendor/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="/styles/vendor/font-awesome.css">
+    <link rel="stylesheet" href="/styles/vendor/dlicon.css">
+    <!-- Others CSS -->
+    <link rel="stylesheet" href="/styles/plugins/owl-carousel.css">
+    <link rel="stylesheet" href="/styles/plugins/slick.css">
+    <link rel="stylesheet" href="/styles/plugins/magnific-popup.css">
+    <link rel="stylesheet" href="/styles/plugins/jarallax.css">
+    <link rel="stylesheet" href="/styles/plugins/easyzoom.css">
+    <link rel="stylesheet" href="/styles/plugins/animate.css">
+    <link rel="stylesheet" href="/styles/plugins/fullpage.css">
+    <link rel="stylesheet" href="/styles/plugins/jquery-ui.css">
+    <link rel="stylesheet" href="/styles/plugins/select2.min.css">
+    <link rel="stylesheet" href="/styles/style.css">
+
+</head>
+
+<body>
+
+<div class="main-wrapper">
+    <header class="header-area section-padding-1">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-xl-2 col-lg-2">
+                    <div class="logo logo-width">
+                        <a href="/">
+                            <img src="/images/logo/logo.png" alt="logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-8 d-flex justify-content-center position-static">
+                    <div class="main-menu menu-lh-1 main-menu-padding-1">
+                        <nav>
+                            <ul>
+                                <li class="position-static"><a class="active" href="/">Главная</a>
+                                </li>
+                                <li><a href="/">Страницы <i class="fa fa-angle-down"></i></a>
+                                    <ul class="sub-menu-width">
+                                        <li><a href="/about-us">О нас</a></li>
+                                        <li><a href="/contact">Контакты</a></li>
+                                        <li><a href="/faq">FAQ</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/product/all">Магазин </a>
+                                </li>
+                                <li><a href="/blog">Блог </a>
+                                </li>
+                                <li><a href="/account">Мой аккаунт <i class="fa fa-angle-down"></i> </a>
+                                    <ul class="sub-menu-width">
+                                        <li><a href="/account">Аккаунт</a></li>
+                                        <li><a href="/cart">Корзина</a></li>
+                                        <li><a href="/login">Вход / Регистрация</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="breadcrumb-area section-padding-1 bg-gray breadcrumb-ptb-1">
+        <div class="container-fluid">
+            <div class="breadcrumb-content text-center">
+                <div class="breadcrumb-title">
+                    <h2>Статистика</h2>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/">Главная </a>
+                    </li>
+                    <li><span> &gt; </span></li>
+                    <li class="active"><a href="/admin/actions">Администратор</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="my-account-area pt-100 pb-95">
+        <div class="container">
+            <div class="row flex-row-reverse">
+                <div class="col-lg-12">
+                    <div class="myaccount-tab-menu nav" role="tablist">
+                        <a href="#sort" class="active" data-bs-toggle="tab">Сортировка по популярности</a>
+                        <a href="#report" data-bs-toggle="tab">Отчет продаж</a>
+                        <a href="#chart" data-bs-toggle="tab">График</a>
+                        <a href="#oods" data-bs-toggle="tab">Коэффициенты</a>
+                        <a href="/logout">Выход</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- My Account Tab Menu End -->
+    <!-- My Account Tab Content Start -->
+    <div id="sort" class="tab-pane fade show active">
+        <div class="shop-area section-padding-3 pt-70 pb-100">
+            <div class="container-fluid">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-9">
+                        <div class="shhop-pl-35">
+                            <div class="shop-top-bar">
+                                <div class="shop-top-bar-left">
+                                    <div class="shop-top-show">
+                                        <span th:text="'Показать 1–12 из ' + ${count} + ' результатов'"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-filter-wrapper">
+                                <div class="row">
+                                    <!-- Product Filter -->
+                                </div>
+                            </div>
+                            <div class="tab-content jump-3 pt-30">
+                                <div id="shop-1" class="tab-pane active">
+                                    <div class="row">
+                                        <div th:each="product: ${products}"
+                                             class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                                            <div class="product-wrap mb-50">
+                                                <div class="product-img default-overlay mb-25">
+                                                    <a th:href="@{/product/info/{id}(id= ${product.productId})}">
+                                                        <img class="default-img"
+                                                             th:src="@{${product.productPicture}}"
+                                                             alt="Product Image" height="500" width="500">
+                                                    </a>
+                                                </div>
+                                                <div class="product-content-2 title-font-width-400 text-center">
+                                                    <h3 class="title-blod"><a
+                                                            th:href="@{/product/info/{id}(id= ${product.productId})}">
+                                                        <span th:text="${product.productName}"></span>
+                                                    </a></h3>
+                                                    <div class="product-price">
+                                                                    <span class="new-price"
+                                                                          th:text="${product.productCost}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="shop-2" class="tab-pane">
+                                    <div th:each="product: ${products}" class="shop-list-wrap mb-70">
+                                        <div class="row">
+                                            <div class="custom-col-32-shop">
+                                                <div class="product-wrap">
+                                                    <div class="product-img default-overlay">
+                                                        <a th:href="@{/product/info/{id}(id= ${product.productId})}">
+                                                            <img class="default-img"
+                                                                 th:src="@{${product.productPicture}}"
+                                                                 alt="Product Image" height="500"
+                                                                 width="500">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="custom-col-68-shop">
+                                                <div class="shop-list-content ml-20">
+                                                    <h3 class="title-blod"><a
+                                                            th:href="@{/product/info/{id}(id= ${product.productId})}">
+                                                        <span th:text="${product.productName}"></span>
+                                                    </a></h3>
+                                                    <div class="pro-list-price">
+                                                        <span th:text="${product.productCost}"></span>
+                                                    </div>
+                                                    <p th:text="${product.productDescription}">></p>
+                                                    <div class="product-list-action">
+                                                        <a title="Add to Wishlist" href="#"><i
+                                                                class="fa fa-heart"></i></a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pro-pagination-style text-center">
+                                    <ul>
+                                        <li><a class="active" href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#"><i class="dlicon arrows-1_tail-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Tab Content End -->
+        <!-- Single Tab Content Start -->
+        <div class="tab-pane fade" id="report" role="tabpanel">
+            <div class="myaccount-content">
+                <div class="myaccount-table table-responsive text-center">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>Фото</th>
+                            <th>Название товара</th>
+                            <th>Количество продаж</th>
+                            <th>Стоимость единицы</th>
+                            <th>Итоговая стоимость продаж</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="report : ${report}">
+
+                            <td style="text-align: center;">
+                                <div id="imageContainer"
+                                     style="display: inline-block; position: relative;">
+                                    <img th:if="${report.photo}"
+                                         id="productImage_${product.productId}"
+                                         th:src="@{${report.photo}}"
+                                         alt="Product Image"
+                                         width="120" height="120">
+                                </div>
+                            </td>
+                            <td th:text="${report.name}"></td>
+                            <td th:text="${report.count}"></td>
+                            <td th:text="${report.cost}"></td>
+                            <td th:text="${report.sum}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="chart" role="tabpanel">
+            <div class="myaccount-content">
+                <div class="myaccount-table table-responsive text-center">
+                    <div id="salesChart" style="width: 800px; height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="oods" role="tabpanel">
+            <div class="myaccount-content">
+                <div class="myaccount-table table-responsive text-center">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>Фото</th>
+                            <th>Название товара</th>
+                            <th>Коэффициент продаж</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="ood : ${oods}">
+                            <td style="text-align: center;">
+                                <div id="imageContainer1"
+                                     style="display: inline-block; position: relative;">
+                                    <img th:if="${ood.photo}"
+                                         id="productImage1_${product.productId}"
+                                         th:src="@{${ood.photo}}"
+                                         alt="Product Image"
+                                         width="120" height="120">
+                                </div>
+                            </td>
+                            <td th:text="${ood.name}"></td>
+                            <td th:text="${ood.ood}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer-area section-padding-1 border-top-3">
+    <div class="container-fluid">
+        <div class="footer-top pt-100 pb-60">
+            <div class="row">
+                <div class="footer-column footer-width-24">
+                    <div class="footer-widget footer-about mb-30">
+                        <a href="/">
+                            <img src="/images/logo/logo.png" alt="logo">
+                        </a>
+                        <p>Мы объединяем все известные на сегодняшний день технологии переработки пластмасс: литье
+                            под давлением,
+                            экструзия, выдув, ротационное формование, прессование.</p>
+                        <div class="social-icon-style-2 social-icon-hm4">
+                            <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                            <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                            <a class="youtube" href="#"><i class="fa fa-youtube"></i></a>
+                            <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-column footer-width-12">
+                    <div class="footer-widget footer-info-list-2 mb-30">
+                        <h3 class="footer-title">Полезные ссылки</h3>
+                        <ul>
+                            <li><a href="/about-us">О нас</a></li>
+                            <li><a href="/about-us">Помошь</a></li>
+                            <li><a href="/about-us">Наша команда</a></li>
+                            <li><a href="/about-us">Политика организации</a></li>
+                            <li><a href="#">Блог</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column footer-width-19">
+                    <div class="footer-widget footer-info-list-2 footer-contect mb-30">
+                        <h3 class="footer-title">Контактная информация</h3>
+                        <ul>
+                            <li><i class="dlicon ui-2_time-clock"></i> Понедельник - Пятница: 9:00 - 17:00</li>
+                            <li><i class="dlicon ui-1_email-83"></i> bzpi@bzpi.by</li>
+                            <li><i class="dlicon tech-2_rotate"></i> +375 (177) 79-08-21</li>
+                            <li><i class="dlicon ui-1_home-simple"></i> 222511, Республика Беларусь,
+                                Минская область, Борисова,
+                                ул. Даумана, 97
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column footer-width-29 mb-30">
+                    <div class="contact-page-map">
+                        <div id="contact-map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-botoom">
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright-2 text-center">
+                        <p>© 2024 <a href="https://www.bzpi.by/">БЗПИ.</a> Все права защищены.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="support-lists">
+    <ul>
+        <li><a href="#"><i class="dlicon ui-3_chat-46"></i></a></li>
+        <li><a href="#"><i class=" dlicon ui-3_phone"></i></a></li>
+        <li><a href="#"><i class="dlicon ui-1_email-85"></i></a></li>
+    </ul>
+</div>
+</div>
+
+<!-- All JS is here
+============================================ -->
+<script src="/scripts/vendor/modernizr-3.11.7.min.js"></script>
+<!-- jquery -->
+<script src="/scripts/vendor/jquery-v3.6.0.min.js"></script>
+<!-- Popper scripts -->
+<script src="/scripts/vendor/popper.js"></script>
+<!-- Bootstrap scripts -->
+<script src="/scripts/vendor/bootstrap.min.js"></script>
+<script src="/scripts/plugins/owl-carousel.js"></script>
+<script src="/scripts/plugins/slick.js"></script>
+<script src="/scripts/plugins/jarallax.min.js"></script>
+<script src="/scripts/plugins/countdown.js"></script>
+<script src="/scripts/plugins/magnific-popup.js"></script>
+<script src="/scripts/plugins/instafeed.js"></script>
+<script src="/scripts/plugins/tilt.js"></script>
+<script src="/scripts/plugins/images-loaded.js"></script>
+<script src="/scripts/plugins/isotope.js"></script>
+<script src="/scripts/plugins/scrolloverflow-fullpage.js"></script>
+<script src="/scripts/plugins/fullpage.js"></script>
+<script src="/scripts/plugins/jquery-ui.js"></script>
+<script src="/scripts/plugins/jquery-ui-touch-punch.js"></script>
+<script src="/scripts/plugins/easyzoom.js"></script>
+<script src="/scripts/plugins/resizesensor.js"></script>
+<script src="/scripts/plugins/sticky-sidebar.js"></script>
+<script src="/scripts/plugins/scrollup.js"></script>
+<script src="/scripts/plugins/select2.min.js"></script>
+<script src="/scripts/plugins/cookie.js"></script>
+<script src="/scripts/plugins/bpopup.js"></script>
+<script src="/scripts/plugins/wow.js"></script>
+<script src="/scripts/plugins/ajax-mail.js"></script>
+<!-- Main scripts -->
+<script src="/scripts/main.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMlLa3XrAmtemtf97Z2YpXwPLlimRK7Pk"></script>
+
+<script>
+    function updateImage(input, imageId) {
+        const file = input.files[0];
+        console.log('File selected:', file.name); // Добавлено для отладки
+        if (file) {
+            const productImage = document.getElementById(imageId);
+            productImage.onload = function () {
+                URL.revokeObjectURL(productImage.src); // Освобождаем ресурсы
+            };
+            const imageURL = URL.createObjectURL(file);
+            productImage.src = imageURL;
+        }
+    }
+
+    // Добавим обработчик события change к каждому input[type=file] с классом file-input
+    const fileInputs = document.querySelectorAll('.file-input');
+    fileInputs.forEach(function (input) {
+        input.addEventListener('change', function () {
+            const imageId = this.getAttribute('data-image-id');
+            updateImage(this, imageId);
+        });
+    });
+</script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var chartData = /*[[${chartData}]]*/ []; // Данные о продуктах и количестве продаж
+    var data = []; // Массив данных для графика
+
+    // Заполнение массива данными из chartData
+    chartData.forEach(function (item) {
+        data.push([item.productType, item.salesCount]);
+    });
+
+    // Загрузка библиотеки Google Charts и установка обратного вызова
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Функция для рисования графика
+    function drawChart() {
+        var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn('string', 'Product');
+        dataTable.addColumn('number', 'Sales');
+        dataTable.addRows(data);
+
+        var options = {
+            title: 'Продажи продуктов',
+            chartArea: {width: '50%'},
+            hAxis: {
+                title: 'Продукт'
+            },
+            vAxis: {
+                title: 'Количество продаж',
+                minValue: 0
+            },
+            colors: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0', '#ffb3e6'] // Цвета столбцов
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('salesChart'));
+        chart.draw(dataTable, options);
+    }
+
+    /*]]>*/
+</script>
+
+
+
+
+<script>
+    function init() {
+        var mapOptions = {
+            zoom: 11,
+            scrollwheel: false,
+            center: new google.maps.LatLng(54.2071, 28.5067), // Координаты для г. Борисов, Беларусь
+            styles: [
+                // Стили карты
+            ]
+        };
+        var mapElement = document.getElementById('contact-map');
+        var map = new google.maps.Map(mapElement, mapOptions);
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(54.2071, 28.5067), // Координаты для г. Борисов, Беларусь
+            map: map,
+            icon: '/images/icon-img/2.png',
+            animation: google.maps.Animation.BOUNCE,
+            title: 'Местоположение: г. Борисов, ул. Даумана, 97'
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', init);
+</script>
+</body>
+
+</html>

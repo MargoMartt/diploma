@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>BZPI - Online shop</title>
+    <title>БЗПИ - Онлайн-магазин</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,25 +50,24 @@
                     <div class="main-menu menu-lh-1 main-menu-padding-1">
                         <nav>
                             <ul>
-                                <li class="position-static"><a href="/">Home <i
-                                        class="fa fa-angle-down"></i></a>
+                                <li class="position-static"><a class="active" href="/">Главная</a>
                                 </li>
-                                <li><a href="/">Pages <i class="fa fa-angle-down"></i></a>
+                                <li><a href="/">Страницы <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu-width">
-                                        <li><a href="/about-us">About Us</a></li>
-                                        <li><a href="/contact">Contact Page</a></li>
+                                        <li><a href="/about-us">О нас</a></li>
+                                        <li><a href="/contact">Контакты</a></li>
                                         <li><a href="/faq">FAQ</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/product/all">Shop </a>
+                                <li><a href="/product/all">Магазин </a>
                                 </li>
-                                <li><a href="blog-3.html">Blog </a>
+                                <li><a href="/blog">Блог </a>
                                 </li>
-                                <li><a class="active" href="/account">My account <i class="fa fa-angle-down"></i> </a>
+                                <li><a href="/account">Мой аккаунт <i class="fa fa-angle-down"></i> </a>
                                     <ul class="sub-menu-width">
-                                        <li><a href="/account">My Account</a></li>
-                                        <li><a href="/cart">Shopping Cart</a></li>
-                                        <li><a href="/login">login / register</a></li>
+                                        <li><a href="/account">Аккаунт</a></li>
+                                        <li><a href="/cart">Корзина</a></li>
+                                        <li><a href="/login">Вход / Регистрация</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -121,60 +120,18 @@
     <!-- search start -->
 
     <!-- mini cart start -->
-    <div class="sidebar-cart-active">
-        <div class="sidebar-cart-all">
-            <a class="cart-close" href="#"><i class="dlicon ui-1_simple-remove"></i></a>
-            <div class="cart-content">
-                <h3>Shopping Cart</h3>
-                <ul>
-                    <li class="single-product-cart">
-                        <div class="cart-img">
-                            <a href="#"><img src="/images/cart/cart-1.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Bejewelled velvet sandals</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                    <li class="single-product-cart">
-                        <div class="cart-img">
-                            <a href="#"><img src="/images/cart/cart-2.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Contrast faux fur jacket</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                </ul>
-                <div class="cart-total">
-                    <h4>Subtotal: <span>$170.00</span></h4>
-                </div>
-                <div class="cart-checkout-btn">
-                    <a class="btn-hover cart-btn-style" href="/cart">view cart</a>
-                    <a class="no-mrg btn-hover cart-btn-style" href="/cart">checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- aside start -->
     <div class="breadcrumb-area section-padding-1 bg-gray breadcrumb-ptb-1">
         <div class="container-fluid">
             <div class="breadcrumb-content text-center">
                 <div class="breadcrumb-title">
-                    <h2>Login / Register</h2>
+                    <h2>Вход / Регистрация</h2>
                 </div>
                 <ul>
                     <li>
-                        <a href="/">Home</a>
+                        <a href="/">Главная</a>
                     </li>
                     <li><span> > </span></li>
-                    <li class="active">Login / Register</li>
+                    <li class="active">Вход / Регистрация</li>
                 </ul>
             </div>
         </div>
@@ -184,49 +141,52 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="login-register-wrap mr-70">
-                        <h3><i class="fa fa-user-o"></i> Login</h3>
+                        <h3><i class="fa fa-user-o"></i> Вход</h3>
                         <div class="login-register-form">
                             <form th:action="@{/login}" method="post">
                                 <div class="sin-login-register">
-                                    <label>Login <span>*</span></label>
+                                    <label>Логин (адрес электронной почты) <span>*</span></label>
                                     <input type="text" name="username">
                                 </div>
                                 <div class="sin-login-register">
-                                    <label>Password <span>*</span></label>
+                                    <label>Пароль <span>*</span></label>
                                     <input type="password" name="password">
                                 </div>
+                                <div th:if="${param.error}" class="alert alert-danger">Неверный логин или пароль</div>
                                 <div class="login-register-btn-remember">
                                     <div class="login-register-btn">
-                                        <button type="submit">Log in</button>
+                                        <button type="submit">Войти</button>
                                     </div>
                                     <div class="login-register-remember">
                                         <input type="checkbox">
-                                        <label>Remember me</label>
+                                        <label>Запомнить меня</label>
                                     </div>
                                 </div>
-                                <!--                                    <a href="#">Lost your password?</a>-->
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="login-register-wrap register-wrap">
-                        <h3><i class="fa fa-user-o"></i> Register</h3>
+                        <h3><i class="fa fa-user-o"></i> Регистрация</h3>
                         <div class="login-register-form">
                             <form action="/register" method="post">
-                                <div class="sin-login-register">
-                                    <label>Login <span>*</span></label>
-                                    <input type="text" name="username">
+                                <div th:if="${registrationError}" class="alert alert-danger error-box">
+                                    <span th:text="${registrationError}"></span>
                                 </div>
                                 <div class="sin-login-register">
-                                    <label>Password <span>*</span></label>
-                                    <input type="password" name="password">
+                                    <label>Логин (адрес электронной почты) <span>*</span></label>
+                                    <input type="email" name="username" required>
                                 </div>
-                                <p>Your personal data will be used to support your experience throughout this website,
-                                    to manage access to your account, and for other purposes described in our <a
-                                            href="#">privacy policy</a></p>
+                                <div class="sin-login-register">
+                                    <label>Пароль <span>*</span></label>
+                                    <input type="password" name="password" required>
+                                </div>
+                                <p>Ваши личные данные будут использоваться для обработки вашего заказа, поддержки вашей
+                                    работы на этом веб-сайте, а также для других целей, описанных в нашей
+                                    <a href="#">политике приватности</a></p>
                                 <div class="login-register-btn">
-                                    <button type="submit">Register</button>
+                                    <button type="submit">Регистрация</button>
                                 </div>
                             </form>
                         </div>
@@ -235,6 +195,7 @@
             </div>
         </div>
     </div>
+
     <footer class="footer-area section-padding-1 border-top-3">
         <div class="container-fluid">
             <div class="footer-top pt-100 pb-60">
@@ -244,8 +205,8 @@
                             <a href="/">
                                 <img src="/images/logo/logo.png" alt="logo">
                             </a>
-                            <p>We combine all currently known technologies for plastic processing: injection molding,
-                                extrusion, blowing, rotational molding, pressing..</p>
+                            <p>Мы объединяем все известные на сегодняшний день технологии переработки пластмасс: литье под давлением,
+                                экструзия, выдув, ротационное формование, прессование.</p>
                             <div class="social-icon-style-2 social-icon-hm4">
                                 <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
                                 <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
@@ -256,34 +217,26 @@
                     </div>
                     <div class="footer-column footer-width-12">
                         <div class="footer-widget footer-info-list-2 mb-30">
-                            <h3 class="footer-title">Company Link</h3>
+                            <h3 class="footer-title">Полезные ссылки</h3>
                             <ul>
-                                <li><a href="/about-us">About Us</a></li>
-                                <li><a href="/about-us">Help Center</a></li>
-                                <li><a href="/about-us">Our Team</a></li>
-                                <li><a href="/about-us">Privacy Policy</a></li>
-                                <li><a href="#">The Blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-column footer-width-14">
-                        <div class="footer-widget footer-info-list-2 mb-30">
-                            <h3 class="footer-title">Userful Link</h3>
-                            <ul>
-                                <li><a href="/product/all">Products</a></li>
+                                <li><a href="/about-us">О нас</a></li>
+                                <li><a href="/about-us">Помошь</a></li>
+                                <li><a href="/about-us">Наша команда</a></li>
+                                <li><a href="/about-us">Политика организации</a></li>
+                                <li><a href="#">Блог</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="footer-column footer-width-19">
                         <div class="footer-widget footer-info-list-2 footer-contect mb-30">
-                            <h3 class="footer-title">Contact info</h3>
+                            <h3 class="footer-title">Контактная информация</h3>
                             <ul>
-                                <li><i class="dlicon ui-2_time-clock"></i> Monday - Friday: 9:00 - 17:00</li>
+                                <li><i class="dlicon ui-2_time-clock"></i> Понедельник - Пятница: 9:00 - 17:00</li>
                                 <li><i class="dlicon ui-1_email-83"></i> bzpi@bzpi.by</li>
                                 <li><i class="dlicon tech-2_rotate"></i> +375 (177) 79-08-21</li>
-                                <li><i class="dlicon ui-1_home-simple"></i> 222511, Republic of Belarus,
-                                    Minsk region, Borisov,
-                                    Dauman str., 97
+                                <li><i class="dlicon ui-1_home-simple"></i> 222511, Республика Беларусь,
+                                    Минская область, Борисова,
+                                    ул. Даумана, 97
                                 </li>
                             </ul>
                         </div>
@@ -299,7 +252,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright-2 text-center">
-                            <p>© 2023 <a href="https://www.bzpi.by/">BZPI.</a> All rights reserved.</p>
+                            <p>© 2024 <a href="https://www.bzpi.by/">БЗПИ.</a> Все права защищены.</p>
                         </div>
                     </div>
                 </div>
@@ -314,6 +267,8 @@
         </ul>
     </div>
 </div>
+
+
 <!-- All JS is here
 ============================================ -->
 
@@ -355,182 +310,24 @@
         var mapOptions = {
             zoom: 11,
             scrollwheel: false,
-            center: new google.maps.LatLng(40.709896, -73.995481),
-            styles: [{
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#e9e9e9"
-                },
-                    {
-                        "lightness": 17
-                    }
-                ]
-            },
-                {
-                    "featureType": "landscape",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#f5f5f5"
-                    },
-                        {
-                            "lightness": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 17
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.stroke",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 29
-                        },
-                        {
-                            "weight": 0.2
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 18
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 16
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#f5f5f5"
-                    },
-                        {
-                            "lightness": 21
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.park",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#dedede"
-                    },
-                        {
-                            "lightness": 21
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.stroke",
-                    "stylers": [{
-                        "visibility": "on"
-                    },
-                        {
-                            "color": "#ffffff"
-                        },
-                        {
-                            "lightness": 16
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.fill",
-                    "stylers": [{
-                        "saturation": 36
-                    },
-                        {
-                            "color": "#333333"
-                        },
-                        {
-                            "lightness": 40
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.icon",
-                    "stylers": [{
-                        "visibility": "off"
-                    }]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#f2f2f2"
-                    },
-                        {
-                            "lightness": 19
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "color": "#fefefe"
-                    },
-                        {
-                            "lightness": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative",
-                    "elementType": "geometry.stroke",
-                    "stylers": [{
-                        "color": "#fefefe"
-                    },
-                        {
-                            "lightness": 17
-                        },
-                        {
-                            "weight": 1.2
-                        }
-                    ]
-                }
+            center: new google.maps.LatLng(54.2071, 28.5067), // Координаты для г. Борисов, Беларусь
+            styles: [
+                // Стили карты
             ]
         };
         var mapElement = document.getElementById('contact-map');
         var map = new google.maps.Map(mapElement, mapOptions);
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(40.709896, -73.995481),
+            position: new google.maps.LatLng(54.2071, 28.5067), // Координаты для г. Борисов, Беларусь
             map: map,
             icon: '/images/icon-img/2.png',
             animation: google.maps.Animation.BOUNCE,
-            title: 'Snazzy!'
+            title: 'Местоположение: г. Борисов, ул. Даумана, 97'
         });
     }
 
     google.maps.event.addDomListener(window, 'load', init);
 </script>
-
 </body>
 
 </html>

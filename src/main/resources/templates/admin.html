@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>BZPI - Online shop</title>
+    <title>БЗПИ - Онлайн-магазин</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,25 +50,24 @@
                     <div class="main-menu menu-lh-1 main-menu-padding-1">
                         <nav>
                             <ul>
-                                <li class="position-static"><a href="/">Home <i
-                                        class="fa fa-angle-down"></i></a>
+                                <li class="position-static"><a class="active" href="/">Главная</a>
                                 </li>
-                                <li><a href="/">Pages <i class="fa fa-angle-down"></i></a>
+                                <li><a href="/">Страницы <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu-width">
-                                        <li><a href="/about-us">About Us</a></li>
-                                        <li><a href="/contact">Contact Page</a></li>
+                                        <li><a href="/about-us">О нас</a></li>
+                                        <li><a href="/contact">Контакты</a></li>
                                         <li><a href="/faq">FAQ</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/product/all">Shop </a>
+                                <li><a href="/product/all">Магазин </a>
                                 </li>
-                                <li><a href="blog-3.html">Blog </a>
+                                <li><a href="/blog">Блог </a>
                                 </li>
-                                <li><a class="active" href="/account">My account <i class="fa fa-angle-down"></i> </a>
+                                <li><a href="/account">Мой аккаунт <i class="fa fa-angle-down"></i> </a>
                                     <ul class="sub-menu-width">
-                                        <li><a href="/account">My Account</a></li>
-                                        <li><a href="/cart">Shopping Cart</a></li>
-                                        <li><a href="/login">login / register</a></li>
+                                        <li><a href="/account">Аккаунт</a></li>
+                                        <li><a href="/cart">Корзина</a></li>
+                                        <li><a href="/login">Вход / Регистрация</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -119,62 +118,18 @@
         </div>
     </div>
 
-    <!-- mini cart start -->
-    <div class="sidebar-cart-active">
-        <div class="sidebar-cart-all">
-            <a class="cart-close" href="#"><i class="dlicon ui-1_simple-remove"></i></a>
-            <div class="cart-content">
-                <h3>Shopping Cart</h3>
-                <ul>
-                    <li class="single-product-cart">
-                        <div class="cart-img">
-                            <a href="#"><img src="/images/cart/cart-1.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Bejewelled velvet sandals</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                    <li class="single-product-cart">
-                        <div class="cart-img">
-                            <a href="#"><img src="/images/cart/cart-2.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Contrast faux fur jacket</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                </ul>
-                <div class="cart-total">
-                    <h4>Subtotal: <span>$170.00</span></h4>
-                </div>
-                <div class="cart-checkout-btn">
-                    <a class="btn-hover cart-btn-style" href="/cart">view cart</a>
-                    <a class="no-mrg btn-hover cart-btn-style" href="/checkout">checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- aside start -->
-
     <div class="breadcrumb-area section-padding-1 bg-gray breadcrumb-ptb-1">
         <div class="container-fluid">
             <div class="breadcrumb-content text-center">
                 <div class="breadcrumb-title">
-                    <h2>Admin page</h2>
+                    <h2>Панель администратора</h2>
                 </div>
                 <ul>
                     <li>
-                        <a href="/">Home </a>
+                        <a href="/">Главная </a>
                     </li>
                     <li><span> &gt; </span></li>
-                    <li class="active"> Administrator</li>
+                    <li class="active"> Администратор</li>
                 </ul>
             </div>
         </div>
@@ -185,12 +140,12 @@
                 <div class="col-lg-12">
                     <div class="myaccount-tab-menu nav" role="tablist">
                         <a href="#dashboad" class="active" data-bs-toggle="tab">
-                            Dashboard</a>
-                        <a href="#account-info" data-bs-toggle="tab"> Account Details</a>
-                        <a href="#orders" data-bs-toggle="tab"> Orders</a>
-                        <a href="#products" data-bs-toggle="tab"> Products</a>
-                        <a href="#users" data-bs-toggle="tab"> Users</a>
-                        <a href="/logout"> Logout</a>
+                            Общая информация</a>
+                        <a href="#account-info" data-bs-toggle="tab"> Детали аккаунта</a>
+                        <a href="#orders" data-bs-toggle="tab"> Заказы</a>
+                        <a href="#products" data-bs-toggle="tab"> Продукция</a>
+                        <a href="#users" data-bs-toggle="tab"> Пользователи</a>
+                        <a href="/logout"> Выход</a>
                     </div>
                     <!-- My Account Tab Menu End -->
                     <!-- My Account Tab Content Start -->
@@ -199,272 +154,288 @@
                         <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
                             <div class="myaccount-content">
                                 <div class="welcome">
-                                    <p>Hello, <strong
+                                    <p>Здравствуйте, <strong
                                             th:text="${user.getUserName()} + ' ' + ${user.getUserSurname()}"></strong>
                                     </p>
                                 </div>
 
-                                <p class="mb-0">From your account dashboard. you can view all orders, change their
-                                    status, manage
-                                    products, work with users and change their status, edit your account details.</p>
+                                <p class="mb-0">На панели администра вы можете просмотреть все заказы, изменить их
+                                    статус,
+                                    управлять проукцией, а также работать с пользователями и изменять их статус. Вы
+                                    также можете
+                                    изменить ваши личные данные.
+                                </p>
+                                <a th:href="@{/admin/statistics}"> <div> Просмотреть статистику продаж</div>
+                                </a>
                             </div>
                         </div>
-                        <!-- Single Tab Content End -->
-                        <!-- Single Tab Content Start -->
-                        <div class="tab-pane fade" id="orders" role="tabpanel">
-                            <div class="myaccount-content">
-                                <div class="myaccount-table table-responsive text-center">
-                                    <table class="table table-bordered">
-                                        <thead class="thead-light">
-                                        <tr>
-                                            <th>Order</th>
-                                            <th>Product</th>
-                                            <th>Delivering type</th>
-                                            <th>Status</th>
-                                            <th>Date</th>
-                                            <th>Payment Type</th>
-                                            <th>Total</th>
-                                            <th>User Id</th>
-                                            <th>User Type</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="order : ${orders}">
-                                            <form method="post"
-                                                  th:action="@{/admin/actions/orderStatus/{id}(id=${order.getIdOrder()})}"
-                                                  style="display: inline;">
-                                                <td th:text="${order.idOrder}"></td>
-                                                <td><a th:href="@{/product/info/{id}(id=${order.productId})}"
-                                                       th:text="${order.productByProductId.productName}"></a></td>
-                                                <td><span th:text="${order.orderType}"></span></td>
-                                                <td><select class="select-active" name="status"
-                                                            onchange="handleSelectChange(this)">
-                                                    <option th:each="orderStatus : ${orderStatuses}"
-                                                            th:value="${orderStatus}" th:text="${orderStatus}"
-                                                            th:selected="${orderStatus == order.getOrderStatus()}"></option>
-                                                </select>
-                                                </td>
-                                                <td><span th:text="${order.date} + ' ' + ${order.time}"></span></td>
-                                                <td><span th:text="${order.orderPayment}"></span></td>
-                                                <td><span th:text="${order.orderCost} + ' $'"></span></td>
-                                                <td><span th:text="${order.userByIdUser.userId}"></span></td>
-                                                <td><span th:text="${order.orderCustomerType}"></span></td>
-                                                <td>
-                                                    <button type="submit"
-                                                            style="background: none; border: none; padding: 0; cursor: pointer;">
-                                                        <span>Edit Data</span>
-                                                    </button>
-                                                </td>
-                                            </form>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Tab Content End -->
-                        <!-- Single Tab Content Start -->
-                        <div class="tab-pane fade" id="account-info" role="tabpanel">
-                            <form method="post" th:action="@{/account/editUser}">
+                            <!-- Single Tab Content End -->
+                            <!-- Single Tab Content Start -->
+                            <div class="tab-pane fade" id="orders" role="tabpanel">
                                 <div class="myaccount-content">
-                                    <div class="account-details-form">
-                                        <form action="#">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="single-input-item">
-                                                        <label for="first-name" class="required">First Name
-                                                            <span>*</span></label>
-                                                        <input type="text" name="name" th:value="${user.getUserName()}"
-                                                               id="first-name"/>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="single-input-item">
-                                                        <label for="last-name" class="required">Last Name <span>*</span></label>
-                                                        <input type="text" name="surname"
-                                                               th:value="${user.getUserSurname()}" id="last-name"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="single-input-item">
-                                                <label for="display-name" class="required">Login
-                                                    <span>*</span></label>
-                                                <input type="text" name="login" th:value="${user.getLogin()}"
-                                                       id="display-name"/>
-                                            </div>
-                                            <div class="single-input-item">
-                                                <label for="email" class="required">Phone number <span>*</span></label>
-                                                <input type="text" name="phone" th:value="${user.getUserPhone()}"
-                                                       id="email"/>
-                                            </div>
-                                            <fieldset>
-                                                <legend>Password change</legend>
-                                                <div class="single-input-item">
-                                                    <label for="current-pwd" class="required">Current password </label>
-                                                    <input type="password" id="current-pwd" name="oldPassword"/>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="single-input-item">
-                                                            <label for="new-pwd" class="required">New password (leave
-                                                                blank to leave unchanged)</label>
-                                                            <input type="password" id="new-pwd" name="newPassword"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="single-input-item">
-                                                            <label for="confirm-pwd" class="required">Confirm new
-                                                                password</label>
-                                                            <input type="password" id="confirm-pwd"
-                                                                   name="newPassword2"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                            <div class="single-input-item">
-                                                <button type="submit" class="check-btn sqr-btn ">Save Changes</button>
-                                            </div>
-                                        </form>
+                                    <div class="myaccount-table table-responsive text-center">
+                                        <table class="table table-bordered">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>Заказ</th>
+                                                <th>Товар</th>
+                                                <th>Тип доставки</th>
+                                                <th>Статус</th>
+                                                <th>Дата</th>
+                                                <th>Тип оплаты</th>
+                                                <th>Сумма</th>
+                                                <th>Id покупателя</th>
+                                                <th>Тип пользователя</th>
+                                                <th>Действие</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="order : ${orders}">
+                                                <form method="post"
+                                                      th:action="@{/admin/actions/orderStatus/{id}(id=${order.getIdOrder()})}"
+                                                      style="display: inline;">
+                                                    <td th:text="${order.idOrder}"></td>
+                                                    <td><a th:href="@{/product/info/{id}(id=${order.productId})}"
+                                                           th:text="${order.productByProductId.productName}"></a></td>
+                                                    <td><span th:text="${order.orderType}"></span></td>
+                                                    <td><select class="select-active" name="status"
+                                                                onchange="handleSelectChange(this)">
+                                                        <option th:each="orderStatus : ${orderStatuses}"
+                                                                th:value="${orderStatus}" th:text="${orderStatus}"
+                                                                th:selected="${orderStatus == order.getOrderStatus()}"></option>
+                                                    </select>
+                                                    </td>
+                                                    <td><span th:text="${order.date} + ' ' + ${order.time}"></span></td>
+                                                    <td><span th:text="${order.orderPayment}"></span></td>
+                                                    <td><span th:text="${order.orderCost} + ' BYN'"></span></td>
+                                                    <td><span th:text="${order.userByIdUser.userId}"></span></td>
+                                                    <td><span th:text="${order.orderCustomerType}"></span></td>
+                                                    <td>
+                                                        <button type="submit"
+                                                                style="background: none; border: none; padding: 0; cursor: pointer;">
+                                                            <span>Изменить</span>
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                            </form>
-                        </div> <!-- Single Tab Content End -->
-                        <div class="tab-pane fade" id="products" role="tabpanel">
-                            <div class="myaccount-content">
-                                <div class="myaccount-table table-responsive text-center">
-                                    <table class="table table-bordered">
-                                        <thead class="thead-light">
-                                        <tr>
-                                            <th>Image</th>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                            <th>Type</th>
-                                            <th>Cost</th>
-                                            <th>Count</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <form th:each="product : ${products}" method="post"
-                                              th:action="@{/admin/actions/products/{id}(id=${product.getProductId()})}"
-                                              style="display: inline;"
-                                              enctype="multipart/form-data">
-                                            <tr>
-                                                <td style="text-align: center;">
-                                                    <div id="imageContainer"
-                                                         style="display: inline-block; position: relative;">
-                                                        <img th:if="${product.productPicture}"
-                                                             id="productImage_${product.productId}"
-                                                             th:src="@{${product.productPicture}}"
-                                                             alt="Product Image" width="120" height="120">
-                                                        <input type="file" name="file"
-                                                               id="fileInput_${product.productId}"
-                                                               style="display: none;">
-                                                        <label for="fileInput_${product.productId}"
-                                                               id="changeImageButton_${product.productId}"
-                                                               style="cursor: pointer; display: block; text-align: center;">Change
-                                                            image</label>
+                            </div>
+                            <!-- Single Tab Content End -->
+                            <!-- Single Tab Content Start -->
+                            <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                <form method="post" th:action="@{/account/editUser}">
+                                    <div class="myaccount-content">
+                                        <div class="account-details-form">
+                                            <form action="#">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="first-name" class="required">Имя
+                                                                <span>*</span></label>
+                                                            <input type="text" name="name"
+                                                                   th:value="${user.getUserName()}"
+                                                                   id="first-name"/>
+                                                        </div>
                                                     </div>
-                                                </td>
-                                                <td style="max-width: 100px; vertical-align: top;">
-                                                    <div style="max-width: 90px; text-align: center; padding: 5px; border: none;">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="last-name" class="required">Фамилия
+                                                                <span>*</span></label>
+                                                            <input type="text" name="surname"
+                                                                   th:value="${user.getUserSurname()}" id="last-name"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="single-input-item">
+                                                    <label for="display-name" class="required">Логин
+                                                        <span>*</span></label>
+                                                    <input type="text" name="login" th:value="${user.getLogin()}"
+                                                           id="display-name"/>
+                                                </div>
+                                                <div class="single-input-item">
+                                                    <label for="email" class="required">Номер телефона
+                                                        <span>*</span></label>
+                                                    <input type="text" name="phone" th:value="${user.getUserPhone()}"
+                                                           id="email"/>
+                                                </div>
+                                                <fieldset>
+                                                    <legend>Изменить пароль</legend>
+                                                    <div class="single-input-item">
+                                                        <label for="current-pwd" class="required">Текущий
+                                                            пароль </label>
+                                                        <input type="password" id="current-pwd" name="oldPassword"/>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="single-input-item">
+                                                                <label for="new-pwd" class="required">Новый пароль
+                                                                    (пропустите поле,
+                                                                    если не хотите вность изменения)</label>
+                                                                <input type="password" id="new-pwd" name="newPassword"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="single-input-item">
+                                                                <label for="confirm-pwd" class="required">Подтвердите
+                                                                    новый
+                                                                    пароль</label>
+                                                                <input type="password" id="confirm-pwd"
+                                                                       name="newPassword2"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <div class="single-input-item">
+                                                    <button type="submit" class="check-btn sqr-btn ">Сохранить изменения
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div> <!-- Single Tab Content End -->
+                            <div class="tab-pane fade" id="products" role="tabpanel">
+                                <div class="myaccount-content">
+                                    <div class="myaccount-table table-responsive text-center">
+                                        <table class="table table-bordered">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>Фото</th>
+                                                <th>Название</th>
+                                                <th>Описание</th>
+                                                <th>Тип</th>
+                                                <th>Стоимость</th>
+                                                <th>Количество</th>
+                                                <th>Действие</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <form th:each="product : ${products}"
+                                                  th:id="'form_' + ${product.getProductId()}" method="post"
+                                                  th:action="@{/admin/actions/products/{id}(id=${product.getProductId()})}"
+                                                  style="display: inline;"
+                                                  enctype="multipart/form-data">
+                                                <tr>
+                                                    <td style="text-align: center;">
+                                                        <div id="imageContainer"
+                                                             style="display: inline-block; position: relative;">
+                                                            <img th:if="${product.productPicture}"
+                                                                 id="productImage_${product.productId}"
+                                                                 th:src="@{${product.productPicture}}"
+                                                                 alt="Product Image"
+                                                                 width="120" height="120">
+                                                            <input type="file" name="file"
+                                                                   id="fileInput_${product.productId}"
+                                                                   class="file-input"
+                                                                   data-image-id="productImage_${product.productId}"
+                                                                   onchange="console.log('Selected file:', this.files[0].name);">
+                                                            <label for="fileInput_${product.productId}"
+                                                                   id="changeImageButton_${product.productId}"
+                                                                   style="cursor: pointer; display: block; text-align: center;">Изменить
+                                                                изображение</label>
+                                                        </div>
+                                                    </td>
+                                                    <td style="max-width: 100px; vertical-align: top;">
+                                                        <div style="max-width: 90px; text-align: center; padding: 5px; border: none;">
                                                     <textarea rows="1" type="text" name="name"
                                                               style="width: 100%; padding: 0; background: #fff; border: none; outline: none; overflow: hidden; resize: none; text-align: center; white-space: normal; box-sizing: border-box;"
                                                               oninput="this.parentNode.style.height = 'auto'; this.style.height = (this.scrollHeight) + 'px';"
                                                               th:text="${product.getProductName()}">
                                                      </textarea>
-                                                    </div>
-                                                </td>
-                                                <td style="max-width: 200px; vertical-align: top;">
-                                                    <div style="max-width: 180px; text-align: center; padding: 5px; border: none;">
+                                                        </div>
+                                                    </td>
+                                                    <td style="max-width: 200px; vertical-align: top;">
+                                                        <div style="max-width: 180px; text-align: center; padding: 5px; border: none;">
                                                     <textarea rows="1" type="text" name="description"
                                                               style="width: 100%; padding: 0; background: #fff; border: none; outline: none; overflow: hidden; resize: none; text-align: center; white-space: normal; box-sizing: border-box;"
                                                               oninput="this.parentNode.style.height = 'auto'; this.style.height = (this.scrollHeight) + 'px';"
                                                               th:text="${product.getProductDescription()}">
                                                      </textarea>
-                                                    </div>
-                                                </td>
-                                                <td style="max-width: 150px;">
-                                                    <select class="select-active"
-                                                            name="type"
-                                                            onchange="handleSelectChange(this)"
-                                                            style="border: 0">
-                                                        <option th:each="productType : ${productTypes}"
-                                                                th:value="${productType}" th:text="${productType}"
-                                                                th:selected="${productType == product.getProductType()}"></option>
-                                                    </select>
-                                                </td>
-                                                <td style="max-width: 70px;">
-                                                    <input type="number" name="cost"
-                                                           th:value="${product.getProductCost()}"
-                                                           style="background-color: white; border: white"></td>
-                                                <td style="max-width: 70px;">
-                                                    <input type="number" name="count"
-                                                           th:value="${product.productCount}"
-                                                           style="background-color: white; border: white"></td>
-                                                <td>
-                                                    <a th:href="@{/admin/actions/products/delete/{id}(id=${product.getProductId()})}"
-                                                       style="display: inline;">
-                                                        <i class="dlicon ui-1_simple-remove"></i>
-                                                    </a>
+                                                        </div>
+                                                    </td>
+                                                    <td style="max-width: 150px;">
+                                                        <select class="select-active"
+                                                                name="type"
+                                                                onchange="handleSelectChange(this)"
+                                                                style="border: 0">
+                                                            <option th:each="productType : ${productTypes}"
+                                                                    th:value="${productType}" th:text="${productType}"
+                                                                    th:selected="${productType == product.getProductType()}"></option>
+                                                        </select>
+                                                    </td>
+                                                    <td style="max-width: 70px;">
+                                                        <input type="number" name="cost"
+                                                               th:value="${product.getProductCost()}"
+                                                               style="background-color: white; border: white"></td>
+                                                    <td style="max-width: 70px;">
+                                                        <input type="number" name="count"
+                                                               th:value="${product.productCount}"
+                                                               style="background-color: white; border: white"></td>
+                                                    <td>
+                                                        <a th:href="@{/admin/actions/products/delete/{id}(id=${product.getProductId()})}"
+                                                           style="display: inline;">
+                                                            <i class="dlicon ui-1_simple-remove"></i>
+                                                        </a>
 
-                                                    <button type="submit"
-                                                            style="background: none; border: none; padding: 0; cursor: pointer;">
-                                                        <span>Edit Data</span>
-                                                    </button>
-                                                </td>
-                                        </form>
-
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div> <!-- Single Tab Content End -->
-                        <div class="tab-pane fade" id="users" role="tabpanel">
-                            <div class="myaccount-content">
-                                <div class="myaccount-table table-responsive text-center">
-                                    <table class="table table-bordered">
-                                        <thead class="thead-light">
-                                        <tr>
-                                            <th>Login</th>
-                                            <th>Name</th>
-                                            <th>Surname</th>
-                                            <th>Status</th>
-                                            <th>Person type</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="user, userIndex : ${allUsers}">
-                                            <form method="post"
-                                                  th:action="@{/admin/actions/userStatus/{id}(id=${user.getUserId()})}"
-                                                  style="display: inline;">
-                                                <td><span th:text="${user.getLogin()}"></span></td>
-                                                <td><span th:text="${user.getUserName()}"></span></td>
-                                                <td><span th:text="${user.getUserSurname()}"></span></td>
-
-                                                <td><select class="select-active" name="status"
-                                                            onchange="handleSelectChange(this)">
-                                                    <option th:each="userStatus : ${userStatus}"
-                                                            th:value="${userStatus}" th:text="${userStatus}"
-                                                            th:selected="${userStatus == user.getStatus()}"></option>
-                                                </select>
-                                                </td>
-                                                <td><span th:text="${userType[userIndex.index]}"></span></td>
-                                                <td>
-                                                    <button type="submit"
-                                                            style="background: none; border: none; padding: 0; cursor: pointer;">
-                                                        <span>Edit Data</span>
-                                                    </button>
-                                                </td>
+                                                        <button type="submit"
+                                                                style="background: none; border: none; padding: 0; cursor: pointer;">
+                                                            <span>Изменить</span>
+                                                        </button>
+                                                    </td>
                                             </form>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div> <!-- Single Tab Content End -->
+                            <div class="tab-pane fade" id="users" role="tabpanel">
+                                <div class="myaccount-content">
+                                    <div class="myaccount-table table-responsive text-center">
+                                        <table class="table table-bordered">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>Логин</th>
+                                                <th>Имя</th>
+                                                <th>Фамилия</th>
+                                                <th>Статус</th>
+                                                <th>Тип покупателя</th>
+                                                <th>Действие</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="user, userIndex : ${allUsers}">
+                                                <form method="post"
+                                                      th:action="@{/admin/actions/userStatus/{id}(id=${user.getUserId()})}"
+                                                      style="display: inline;">
+                                                    <td><span th:text="${user.getLogin()}"></span></td>
+                                                    <td><span th:text="${user.getUserName()}"></span></td>
+                                                    <td><span th:text="${user.getUserSurname()}"></span></td>
+
+                                                    <td><select class="select-active" name="status"
+                                                                onchange="handleSelectChange(this)">
+                                                        <option th:each="userStatus : ${userStatus}"
+                                                                th:value="${userStatus}" th:text="${userStatus}"
+                                                                th:selected="${userStatus == user.getStatus()}"></option>
+                                                    </select>
+                                                    </td>
+                                                    <td><span th:text="${userType[userIndex.index]}"></span></td>
+                                                    <td>
+                                                        <button type="submit"
+                                                                style="background: none; border: none; padding: 0; cursor: pointer;">
+                                                            <span>Edit Data</span>
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -472,323 +443,158 @@
                 </div>
             </div>
         </div>
-    </div>
-    <footer class="footer-area section-padding-1 border-top-3">
-        <div class="container-fluid">
-            <div class="footer-top pt-100 pb-60">
-                <div class="row">
-                    <div class="footer-column footer-width-24">
-                        <div class="footer-widget footer-about mb-30">
-                            <a href="/">
-                                <img src="/images/logo/logo.png" alt="logo">
-                            </a>
-                            <p>We combine all currently known technologies for plastic processing: injection molding,
-                                extrusion, blowing, rotational molding, pressing..</p>
-                            <div class="social-icon-style-2 social-icon-hm4">
-                                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-                                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                                <a class="youtube" href="#"><i class="fa fa-youtube"></i></a>
-                                <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+        <footer class="footer-area section-padding-1 border-top-3">
+            <div class="container-fluid">
+                <div class="footer-top pt-100 pb-60">
+                    <div class="row">
+                        <div class="footer-column footer-width-24">
+                            <div class="footer-widget footer-about mb-30">
+                                <a href="/">
+                                    <img src="/images/logo/logo.png" alt="logo">
+                                </a>
+                                <p>Мы объединяем все известные на сегодняшний день технологии переработки пластмасс:
+                                    литье
+                                    под давлением,
+                                    экструзия, выдув, ротационное формование, прессование.</p>
+                                <div class="social-icon-style-2 social-icon-hm4">
+                                    <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                                    <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                                    <a class="youtube" href="#"><i class="fa fa-youtube"></i></a>
+                                    <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-column footer-width-12">
+                            <div class="footer-widget footer-info-list-2 mb-30">
+                                <h3 class="footer-title">Полезные ссылки</h3>
+                                <ul>
+                                    <li><a href="/about-us">О нас</a></li>
+                                    <li><a href="/about-us">Помошь</a></li>
+                                    <li><a href="/about-us">Наша команда</a></li>
+                                    <li><a href="/about-us">Политика организации</a></li>
+                                    <li><a href="#">Блог</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer-column footer-width-19">
+                            <div class="footer-widget footer-info-list-2 footer-contect mb-30">
+                                <h3 class="footer-title">Контактная информация</h3>
+                                <ul>
+                                    <li><i class="dlicon ui-2_time-clock"></i> Понедельник - Пятница: 9:00 - 17:00</li>
+                                    <li><i class="dlicon ui-1_email-83"></i> bzpi@bzpi.by</li>
+                                    <li><i class="dlicon tech-2_rotate"></i> +375 (177) 79-08-21</li>
+                                    <li><i class="dlicon ui-1_home-simple"></i> 222511, Республика Беларусь,
+                                        Минская область, Борисова,
+                                        ул. Даумана, 97
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer-column footer-width-29 mb-30">
+                            <div class="contact-page-map">
+                                <div id="contact-map"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="footer-column footer-width-12">
-                        <div class="footer-widget footer-info-list-2 mb-30">
-                            <h3 class="footer-title">Company Link</h3>
-                            <ul>
-                                <li><a href="/about-us">About Us</a></li>
-                                <li><a href="/about-us">Help Center</a></li>
-                                <li><a href="/about-us">Our Team</a></li>
-                                <li><a href="/about-us">Privacy Policy</a></li>
-                                <li><a href="#">The Blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-column footer-width-14">
-                        <div class="footer-widget footer-info-list-2 mb-30">
-                            <h3 class="footer-title">Userful Link</h3>
-                            <ul>
-                                <li><a href="/product/all">Products</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-column footer-width-19">
-                        <div class="footer-widget footer-info-list-2 footer-contect mb-30">
-                            <h3 class="footer-title">Contact info</h3>
-                            <ul>
-                                <li><i class="dlicon ui-2_time-clock"></i> Monday - Friday: 9:00 - 17:00</li>
-                                <li><i class="dlicon ui-1_email-83"></i> bzpi@bzpi.by</li>
-                                <li><i class="dlicon tech-2_rotate"></i> +375 (177) 79-08-21</li>
-                                <li><i class="dlicon ui-1_home-simple"></i> 222511, Republic of Belarus,
-                                    Minsk region, Borisov,
-                                    Dauman str., 97
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-column footer-width-29 mb-30">
-                        <div class="contact-page-map">
-                            <div id="contact-map"></div>
+                </div>
+                <div class="footer-botoom">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="copyright-2 text-center">
+                                <p>© 2024 <a href="https://www.bzpi.by/">БЗПИ.</a> Все права защищены.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-botoom">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="copyright-2 text-center">
-                            <p>© 2023 <a href="https://www.bzpi.by/">BZPI.</a> All rights reserved.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </footer>
+        <div class="support-lists">
+            <ul>
+                <li><a href="#"><i class="dlicon ui-3_chat-46"></i></a></li>
+                <li><a href="#"><i class=" dlicon ui-3_phone"></i></a></li>
+                <li><a href="#"><i class="dlicon ui-1_email-85"></i></a></li>
+            </ul>
         </div>
-    </footer>
-    <div class="support-lists">
-        <ul>
-            <li><a href="#"><i class="dlicon ui-3_chat-46"></i></a></li>
-            <li><a href="#"><i class=" dlicon ui-3_phone"></i></a></li>
-            <li><a href="#"><i class="dlicon ui-1_email-85"></i></a></li>
-        </ul>
     </div>
-</div>
 
-<!-- All JS is here
-============================================ -->
-<script src="/scripts/vendor/modernizr-3.11.7.min.js"></script>
-<!-- jquery -->
-<script src="/scripts/vendor/jquery-v3.6.0.min.js"></script>
-<!-- Popper scripts -->
-<script src="/scripts/vendor/popper.js"></script>
-<!-- Bootstrap scripts -->
-<script src="/scripts/vendor/bootstrap.min.js"></script>
-<script src="/scripts/plugins/owl-carousel.js"></script>
-<script src="/scripts/plugins/slick.js"></script>
-<script src="/scripts/plugins/jarallax.min.js"></script>
-<script src="/scripts/plugins/countdown.js"></script>
-<script src="/scripts/plugins/magnific-popup.js"></script>
-<script src="/scripts/plugins/instafeed.js"></script>
-<script src="/scripts/plugins/tilt.js"></script>
-<script src="/scripts/plugins/images-loaded.js"></script>
-<script src="/scripts/plugins/isotope.js"></script>
-<script src="/scripts/plugins/scrolloverflow-fullpage.js"></script>
-<script src="/scripts/plugins/fullpage.js"></script>
-<script src="/scripts/plugins/jquery-ui.js"></script>
-<script src="/scripts/plugins/jquery-ui-touch-punch.js"></script>
-<script src="/scripts/plugins/easyzoom.js"></script>
-<script src="/scripts/plugins/resizesensor.js"></script>
-<script src="/scripts/plugins/sticky-sidebar.js"></script>
-<script src="/scripts/plugins/scrollup.js"></script>
-<script src="/scripts/plugins/select2.min.js"></script>
-<script src="/scripts/plugins/cookie.js"></script>
-<script src="/scripts/plugins/bpopup.js"></script>
-<script src="/scripts/plugins/wow.js"></script>
-<script src="/scripts/plugins/ajax-mail.js"></script>
-<!-- Main scripts -->
-<script src="/scripts/main.js"></script>
+    <!-- All JS is here
+    ============================================ -->
+    <script src="/scripts/vendor/modernizr-3.11.7.min.js"></script>
+    <!-- jquery -->
+    <script src="/scripts/vendor/jquery-v3.6.0.min.js"></script>
+    <!-- Popper scripts -->
+    <script src="/scripts/vendor/popper.js"></script>
+    <!-- Bootstrap scripts -->
+    <script src="/scripts/vendor/bootstrap.min.js"></script>
+    <script src="/scripts/plugins/owl-carousel.js"></script>
+    <script src="/scripts/plugins/slick.js"></script>
+    <script src="/scripts/plugins/jarallax.min.js"></script>
+    <script src="/scripts/plugins/countdown.js"></script>
+    <script src="/scripts/plugins/magnific-popup.js"></script>
+    <script src="/scripts/plugins/instafeed.js"></script>
+    <script src="/scripts/plugins/tilt.js"></script>
+    <script src="/scripts/plugins/images-loaded.js"></script>
+    <script src="/scripts/plugins/isotope.js"></script>
+    <script src="/scripts/plugins/scrolloverflow-fullpage.js"></script>
+    <script src="/scripts/plugins/fullpage.js"></script>
+    <script src="/scripts/plugins/jquery-ui.js"></script>
+    <script src="/scripts/plugins/jquery-ui-touch-punch.js"></script>
+    <script src="/scripts/plugins/easyzoom.js"></script>
+    <script src="/scripts/plugins/resizesensor.js"></script>
+    <script src="/scripts/plugins/sticky-sidebar.js"></script>
+    <script src="/scripts/plugins/scrollup.js"></script>
+    <script src="/scripts/plugins/select2.min.js"></script>
+    <script src="/scripts/plugins/cookie.js"></script>
+    <script src="/scripts/plugins/bpopup.js"></script>
+    <script src="/scripts/plugins/wow.js"></script>
+    <script src="/scripts/plugins/ajax-mail.js"></script>
+    <!-- Main scripts -->
+    <script src="/scripts/main.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMlLa3XrAmtemtf97Z2YpXwPLlimRK7Pk"></script>
-
-<script>
-    const changeImageButtons = document.querySelectorAll('[id^="changeImageButton_"]');
-    const fileInputs = document.querySelectorAll('[id^="fileInput_"]');
-
-    changeImageButtons.forEach((button, index) => {
-        button.addEventListener('click', function () {
-            fileInputs[index].click();
-        });
-    });
-
-    fileInputs.forEach((fileInput, index) => {
-        fileInput.addEventListener('change', function (event) {
-            const file = event.target.files[0];
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMlLa3XrAmtemtf97Z2YpXwPLlimRK7Pk"></script>
+    <script>
+        function updateImage(input, imageId) {
+            const file = input.files[0];
+            console.log('File selected:', file.name); // Добавлено для отладки
             if (file) {
-                const productImage = document.getElementById(`productImage_${index}`);
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    productImage.src = e.target.result;
+                const productImage = document.getElementById(imageId);
+                productImage.onload = function () {
+                    URL.revokeObjectURL(productImage.src); // Освобождаем ресурсы
                 };
-                reader.readAsDataURL(file);
+                const imageURL = URL.createObjectURL(file);
+                productImage.src = imageURL;
             }
+        }
+
+        // Добавим обработчик события change к каждому input[type=file] с классом file-input
+        const fileInputs = document.querySelectorAll('.file-input');
+        fileInputs.forEach(function (input) {
+            input.addEventListener('change', function () {
+                const imageId = this.getAttribute('data-image-id');
+                updateImage(this, imageId);
+            });
         });
-    });
-</script>
+    </script>
+
 
 <script>
     function init() {
         var mapOptions = {
             zoom: 11,
             scrollwheel: false,
-            center: new google.maps.LatLng(40.709896, -73.995481),
-            styles: [{
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [{
-                    "color": "#e9e9e9"
-                },
-                    {
-                        "lightness": 17
-                    }
-                ]
-            },
-                {
-                    "featureType": "landscape",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#f5f5f5"
-                    },
-                        {
-                            "lightness": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 17
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.stroke",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 29
-                        },
-                        {
-                            "weight": 0.2
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 18
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#ffffff"
-                    },
-                        {
-                            "lightness": 16
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#f5f5f5"
-                    },
-                        {
-                            "lightness": 21
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi.park",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#dedede"
-                    },
-                        {
-                            "lightness": 21
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.stroke",
-                    "stylers": [{
-                        "visibility": "on"
-                    },
-                        {
-                            "color": "#ffffff"
-                        },
-                        {
-                            "lightness": 16
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text.fill",
-                    "stylers": [{
-                        "saturation": 36
-                    },
-                        {
-                            "color": "#333333"
-                        },
-                        {
-                            "lightness": 40
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.icon",
-                    "stylers": [{
-                        "visibility": "off"
-                    }]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "color": "#f2f2f2"
-                    },
-                        {
-                            "lightness": 19
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "color": "#fefefe"
-                    },
-                        {
-                            "lightness": 20
-                        }
-                    ]
-                },
-                {
-                    "featureType": "administrative",
-                    "elementType": "geometry.stroke",
-                    "stylers": [{
-                        "color": "#fefefe"
-                    },
-                        {
-                            "lightness": 17
-                        },
-                        {
-                            "weight": 1.2
-                        }
-                    ]
-                }
+            center: new google.maps.LatLng(54.2071, 28.5067), // Координаты для г. Борисов, Беларусь
+            styles: [
+                // Стили карты
             ]
         };
         var mapElement = document.getElementById('contact-map');
         var map = new google.maps.Map(mapElement, mapOptions);
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(40.709896, -73.995481),
+            position: new google.maps.LatLng(54.2071, 28.5067), // Координаты для г. Борисов, Беларусь
             map: map,
             icon: '/images/icon-img/2.png',
             animation: google.maps.Animation.BOUNCE,
-            title: 'Snazzy!'
+            title: 'Местоположение: г. Борисов, ул. Даумана, 97'
         });
     }
 

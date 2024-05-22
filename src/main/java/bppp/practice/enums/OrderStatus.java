@@ -1,15 +1,20 @@
 package bppp.practice.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum OrderStatus {
-    CART("In cart"),
+    CART("В корзине"),
 
-    WAITING("Order in waiting list"),
+    WAIT_PAYMENT("Ожидается оплата"),
 
-    MANUFACTURING("In the manufacturing process"),
+    WAITING("Заказ в листе ожидания"),
 
-    DELIVERING("Order is delivering"),
+    MANUFACTURING("В процессе производства"),
 
-    DELIVERED("Order delivered");
+    DELIVERING("Заказ доставляется"),
+
+    DELIVERED("Заказ доставлен");
 
     private String status;
 
@@ -17,7 +22,4 @@ public enum OrderStatus {
         this.status = status;
     }
 
-    public String getStatus() {
-        return status;
-    }
 }

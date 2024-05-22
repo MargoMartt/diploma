@@ -1,6 +1,5 @@
 package bppp.practice.controller;
 
-
 import bppp.practice.entity.UserEntity;
 import bppp.practice.entity.UserHasRoleEntity;
 import bppp.practice.service.UserHasRoleService;
@@ -15,7 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.WebRequest;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Component
 @Controller
@@ -27,7 +27,6 @@ public class LoginController {
     UserHasRoleService roleHasUsersService;
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
     @GetMapping("/login")
     public String login() {
         return "login-register";
@@ -35,32 +34,31 @@ public class LoginController {
 
     @GetMapping("/register")
     @PermitAll
-    public String showRegistrationForm(WebRequest request, Model model) {
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("registrationError", "");
         return "login-register";
     }
 
     @PostMapping("/register")
     @PermitAll
     public String registerForm(
-            @RequestParam(name = "username", required = true) String username,
-            @RequestParam(name = "password", required = true) String password,
-//            @RequestParam(name = "name", required = true) String name,
-//            @RequestParam(name = "surname", required = true) String surname,
-            Model model
-    ) {
+            @RequestParam(name = "username", required = true)
+            @Email(message = "Введите правильный адрес электронной почты") String username,
+            @RequestParam(name = "password", required = true)
+            @NotBlank(message = "Пароль не может быть пустым") String password,
+            Model model) {
+
         UserEntity getUser = usersService.getByLogin(username);
 
-        if (getUser != null)
-            return "redirect:/login";
+        if (getUser != null){
+            model.addAttribute("registrationError", "Пользователь с таким логином уже существует.");
+            return "login-register";
+        }
 
         UserEntity user = new UserEntity();
         user.setLogin(username);
         user.setPassword(passwordEncoder.encode(password));
         user.setStatus("Active");
-//        user.setUserName(name);
-//        user.setUserSurname(surname);
-//        user.setBalance(0.0);
-        System.out.println(user);
         usersService.saveUser(user);
 
         UserEntity returnUser = usersService.getByLogin(username);
@@ -72,3 +70,5 @@ public class LoginController {
         return "redirect:/";
     }
 }
+
+

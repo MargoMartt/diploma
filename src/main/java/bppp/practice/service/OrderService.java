@@ -7,19 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface OrderService {
-    public void saveOrder(OrderEntity order);
+     void saveOrder(OrderEntity order);
 
-    public OrderEntity getOrder(int id);
+     OrderEntity getOrder(int id);
 
-    public void deleteOrder(int id);
+     void deleteOrder(int id);
 
-    public List<OrderEntity> getAllOrders();
+     List<OrderEntity> getAllOrders();
 
-    public ArrayList<OrderEntity> getOrdersInCart(UserEntity user, String type);
+     ArrayList<OrderEntity> getOrdersInCart(UserEntity user, String type);
 
-    public ArrayList<OrderEntity> getUsersOrders(UserEntity user);
+     ArrayList<OrderEntity> getUsersOrders(UserEntity user);
 
-    public ArrayList<OrderEntity> getOrdersBuying();
+     ArrayList<OrderEntity> getOrdersBuying();
 
-    public ArrayList<OrderEntity> getOrderByProductId(int id);
+     ArrayList<OrderEntity> getOrderByProductId(int id);
+
+    int countOfOrdersByProductID(int id);
 }
